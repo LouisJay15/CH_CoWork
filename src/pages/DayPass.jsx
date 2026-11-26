@@ -35,7 +35,7 @@ export default function DayPass() {
               </Link>
             </div>
           </div>
-          <Photo id="05-open-plan-desks" tall />
+          <Photo id="open-2" tall />
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import Logo from "../brand/Logo.jsx";
 import { MAIN_NAV, NAV_LABELS, PAGES } from "../lib/pages.js";
 import { useScrolled } from "../lib/media.js";
 import WhatsAppButton from "./WhatsAppButton.jsx";
@@ -7,15 +8,6 @@ import { usePage } from "./Page.jsx";
 import { CloseIcon, MenuIcon } from "./Icons.jsx";
 
 const navLabel = (key) => NAV_LABELS[key] ?? PAGES[key].name;
-
-function Logo({ onClick }) {
-  return (
-    <Link to="/" className="logo" onClick={onClick} aria-label="Charles Hope Cowork, home">
-      <span>Charles Hope</span>
-      <span className="logo__cowork">Cowork</span>
-    </Link>
-  );
-}
 
 function MobileMenu({ open, onClose, returnFocusTo }) {
   const panelRef = useRef(null);
@@ -97,7 +89,7 @@ export default function Header({ overHero = false }) {
   return (
     <header className={`site-header ${clear ? "site-header--clear on-dark" : ""}`}>
       <div className="container site-header__inner">
-        <Logo />
+        <Logo onDark={clear} />
         <nav className="nav" aria-label="Main">
           <ul>
             {MAIN_NAV.map((key) => (

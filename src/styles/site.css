@@ -1,29 +1,7 @@
-/* Charles Hope Cowork: design tokens and styles (plan section 4). Plain CSS, no framework. */
+/* Charles Hope Cowork: site styles. Plain CSS, no framework. Brand tokens: src/brand/brand.css. */
 
 :root {
-  --primary: #ff6661;
-  --primary-hover: #ea5e5a;
-  --ink: #111111;
-  --secondary: #454443;
-  --accent: #90dff5;
-  --deep: #193f48;
-  --mid: #47656d;
-  --light: #e1f1f4;
-  --white: #ffffff;
-  --rule: rgba(25, 63, 72, 0.12);
-
-  --font-display: "DM Serif Display", Georgia, serif;
-  --font-sans: "Work Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-
-  --radius-card: 1rem;
-  --radius-card-lg: 1.5rem;
-  --radius-button: 0.75rem;
-  --radius-pill: 9999px;
-
-  --shadow-card: 0 8px 24px rgba(25, 63, 72, 0.08);
-  --shadow-card-hover: 0 12px 32px rgba(25, 63, 72, 0.12);
-  --shadow-sticky: 0 -4px 16px rgba(25, 63, 72, 0.1);
-
+  /* Layout (not brand). Brand colours, fonts, radii and shadows live in src/brand/brand.css. */
   --site: 72rem;
   --header-h: 72px;
   --gutter: 20px;
@@ -356,7 +334,7 @@ main {
 }
 .btn--primary {
   background: var(--primary);
-  color: var(--ink);
+  color: var(--on-primary);
 }
 .btn--primary:hover {
   background: var(--primary-hover);
@@ -463,7 +441,7 @@ main {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--mid);
-  background: rgba(225, 241, 244, 0.5);
+  background: color-mix(in srgb, var(--light) 50%, transparent);
 }
 .rate-table tbody th {
   font-weight: 600;
@@ -479,7 +457,7 @@ main {
 
 .note {
   border-left: 4px solid var(--accent);
-  background: rgba(144, 223, 245, 0.18);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
   padding: 12px 16px;
   border-radius: 0 var(--radius-button) var(--radius-button) 0;
   font-size: 1rem;
@@ -522,8 +500,8 @@ main {
   color: var(--white);
   background-color: var(--deep);
   background-image:
-    radial-gradient(120% 90% at 80% 0%, rgba(144, 223, 245, 0.22), transparent 60%),
-    radial-gradient(90% 80% at 0% 100%, rgba(255, 102, 97, 0.18), transparent 55%),
+    radial-gradient(120% 90% at 80% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
+    radial-gradient(90% 80% at 0% 100%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 55%),
     repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 22px);
 }
 .ph__label {
@@ -606,7 +584,7 @@ main {
   padding: 4px 8px;
   border-radius: var(--radius-pill);
   background: var(--primary);
-  color: var(--ink);
+  color: var(--on-primary);
 }
 .site-header--clear .logo {
   color: var(--white);
@@ -859,13 +837,13 @@ main {
   height: 100%;
   object-fit: cover;
 }
-.hero__media .ph {
-  aspect-ratio: auto;
+.hero__media img {
+  object-position: 47% 42%; /* keep the logo in view on tall phone screens */
 }
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(25, 63, 72, 0.55) 0%, rgba(25, 63, 72, 0.65) 45%, rgba(25, 63, 72, 0.82) 100%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--deep) 55%, transparent) 0%, color-mix(in srgb, var(--deep) 65%, transparent) 45%, color-mix(in srgb, var(--deep) 82%, transparent) 100%);
 }
 .hero__content {
   position: relative;
@@ -931,45 +909,106 @@ main {
 .tour__head-row .section-head {
   margin-bottom: 0;
 }
-.tour__body {
+/* Ken Burns tour: a pinned stage of stills, with scene captions scrolling over it. */
+.kb {
   position: relative;
+  --span: 45svh; /* scroll per frame; must match SPAN in ScrollTour.jsx */
 }
-.tour__frame {
+@media (min-width: 768px) {
+  .kb {
+    --span: 60svh;
+  }
+}
+.kb__stage {
   position: sticky;
   top: 0;
   height: 100svh;
   overflow: hidden;
   z-index: 0;
+  background: var(--deep);
+  contain: layout paint;
 }
-.tour__frame video,
-.tour__frame .tour__img {
+.kb__img {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
+  object-position: 47% 42%;
+  transform-origin: 0 0;
+  will-change: transform, opacity;
+  visibility: hidden;
+  user-select: none;
+  -webkit-user-drag: none;
 }
-.tour__img {
-  opacity: 0;
-  transition: opacity 0.2s ease;
+.kb__stage picture:first-child .kb__img {
+  visibility: visible;
 }
-.tour__img.is-active {
-  opacity: 1;
-}
-.tour__shade {
+.kb__shade {
   position: absolute;
   inset: 0;
-  background: rgba(25, 63, 72, 0.45);
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--deep) 45%, transparent) 0%,
+    transparent 28%,
+    transparent 52%,
+    color-mix(in srgb, var(--deep) 60%, transparent) 100%
+  );
+}
+/* Scroll distance for the pinned stage: one --span per frame, plus a screen to settle on the last one. */
+.kb__track {
+  position: relative;
+  z-index: -1;
+  margin-top: -100svh;
+  height: calc((var(--frames) - 1) * var(--span) + 100svh + 0.5 * var(--span));
+  pointer-events: none;
+}
+.kb__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(76px + env(safe-area-inset-bottom));
+  z-index: 2;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .kb__caption {
+    bottom: 56px;
+  }
+}
+.kb__caption .tour__card {
+  animation: kb-caption 0.35s ease both;
+}
+@keyframes kb-caption {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 767px) {
+  .kb__caption .tour__card {
+    padding: 14px 18px;
+  }
+  .kb__caption .tour__card h3 {
+    font-size: 1.375rem;
+  }
 }
 .tour__frame-skip {
   position: absolute;
   right: max(var(--gutter), calc((100% - var(--site)) / 2));
-  bottom: 24px;
+  top: calc(var(--header-h) + 8px);
   z-index: 2;
-  padding: 8px 16px;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  padding: 8px 16px;
   border-radius: var(--radius-pill);
   background: rgba(17, 17, 17, 0.55);
   color: var(--white);
@@ -980,7 +1019,7 @@ main {
 .tour__progress {
   position: absolute;
   left: max(var(--gutter), calc((100% - var(--site)) / 2));
-  top: calc(var(--header-h) + 16px);
+  top: calc(var(--header-h) + 26px);
   z-index: 2;
   display: flex;
   gap: 6px;
@@ -995,22 +1034,10 @@ main {
 .tour__progress span.is-on {
   background: var(--primary);
 }
-.tour__stops {
-  position: relative;
-  z-index: 1;
-  margin-top: -100svh;
-  pointer-events: none;
-}
-.tour__stop {
-  min-height: 90svh;
-  display: flex;
-  align-items: center;
-}
-.tour--photos .tour__stop {
-  min-height: 75svh;
-}
-.tour__stop:first-child {
-  min-height: 100svh;
+.logo img {
+  display: block;
+  height: 32px;
+  width: auto;
 }
 .tour__card {
   pointer-events: auto;
@@ -1033,12 +1060,6 @@ main {
 }
 .tour__card p {
   margin-top: 8px;
-}
-@media (max-width: 767px) {
-  .tour__stop {
-    align-items: flex-end;
-    padding-bottom: 96px;
-  }
 }
 .tour__end {
   padding: 48px 0 64px;
@@ -1129,7 +1150,7 @@ main {
 .chip input:checked + span {
   background: var(--accent);
   border-color: var(--deep);
-  color: var(--ink);
+  color: var(--on-accent);
   font-weight: 600;
 }
 .chip input:focus-visible + span {
@@ -1154,7 +1175,7 @@ main {
   width: 100%;
   min-height: 48px;
   padding: 10px 14px;
-  border: 2px solid rgba(25, 63, 72, 0.3);
+  border: 2px solid color-mix(in srgb, var(--deep) 30%, transparent);
   border-radius: var(--radius-button);
   background: var(--white);
   color: var(--ink);
@@ -1254,7 +1275,7 @@ main {
 }
 .calc__result {
   padding: 20px;
-  background: rgba(225, 241, 244, 0.6);
+  background: color-mix(in srgb, var(--light) 60%, transparent);
   border-top: 1px solid var(--rule);
 }
 @media (min-width: 768px) {
@@ -1382,7 +1403,7 @@ main {
 }
 .fys__option[aria-pressed="true"] {
   border-color: var(--deep);
-  background: rgba(144, 223, 245, 0.25);
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
 }
 .fys__option small {
   font-weight: 400;

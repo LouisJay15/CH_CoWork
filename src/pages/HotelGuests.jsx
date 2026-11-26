@@ -27,7 +27,7 @@ export default function HotelGuests() {
               <WhatsAppButton page="Hotel guests" template="hotel-guest" option={live?.summary} estimate={live?.total} label="Enquire as a hotel guest on WhatsApp" />
             </div>
           </div>
-          <Photo id="06-lounge-city-view" tall />
+          <Photo id="lounge" tall />
         </div>
       </section>
 
@@ -42,7 +42,7 @@ export default function HotelGuests() {
 
       <section className="section section--white" aria-labelledby="hg-benefits">
         <div className="container split split--center">
-          <Photo id="07-reception-charleshope-wall" tall />
+          <Photo id="entrance-wide" tall position="47% 45%" />
           <div className="stack">
             <h2 className="h2" id="hg-benefits">Part of the Charles Hope hotel</h2>
             <p>Charles Hope is a 41-room boutique hotel, and Noah is the on-site restaurant.</p>

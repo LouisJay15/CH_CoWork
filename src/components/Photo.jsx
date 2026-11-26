@@ -1,47 +1,44 @@
-import { PHOTOS, photoFiles } from "../lib/photos.js";
+import { frame, src, srcSet } from "../lib/frames.js";
 
-/** A labelled panel shown until the real photograph is added to public/images. */
-export function PhotoPlaceholder({ id, label, alt, className = "", decorative = false, bare = false }) {
-  const caption = label ?? PHOTOS[id]?.caption ?? "Photograph";
+/** Panel for a photo that has not been supplied yet (only the glass meeting pod at the moment). */
+export function PhotoPlaceholder({ label = "Photograph", className = "" }) {
   return (
-    <div
-      className={`ph ${className}`}
-      {...(decorative ? { "aria-hidden": true } : { role: "img", "aria-label": alt ?? PHOTOS[id]?.alt ?? caption })}
-    >
-      {!bare && <span className="ph__label">{caption}</span>}
-      {!bare && <span className="ph__sub">Photo to follow</span>}
+    <div className={`ph ${className}`} role="img" aria-label={`${label}: photograph to follow`}>
+      <span className="ph__label">{label}</span>
+      <span className="ph__sub">Photo to follow</span>
     </div>
   );
 }
 
-/** A supplied photograph (WebP with JPEG fallback) with its exact alt text. */
-export default function Photo({ id, caption, priority = false, sizes = "(min-width: 960px) 50vw, 100vw", tall = false, decorative = false, className = "" }) {
-  const meta = PHOTOS[id];
-  const files = photoFiles(id);
-  const alt = decorative ? "" : meta.alt;
-  const frameClass = `photo ${tall ? "photo--tall" : ""} ${className}`;
-  const media = files ? (
+/**
+ * A photograph from src/media/manifest.json: AVIF with a WebP fallback, responsive sizes,
+ * lazy unless it is the main image, fixed aspect ratio so nothing shifts while it loads.
+ */
+export default function Photo({ id, caption, priority = false, sizes = "(min-width: 960px) 50vw, 100vw", tall = false, decorative = false, className = "", position }) {
+  const f = frame(id);
+  const media = (
     <picture>
-      {files.webp && <source type="image/webp" srcSet={files.webp} sizes={sizes} />}
+      <source type="image/avif" srcSet={srcSet(id, "wide", "avif")} sizes={sizes} />
       <img
-        src={files.src}
-        alt={alt}
-        width={files.width}
-        height={files.height}
+        src={src(id, "wide", 1200, "webp")}
+        srcSet={srcSet(id, "wide", "webp")}
+        sizes={sizes}
+        alt={decorative ? "" : f.alt}
+        width={f.wide.w}
+        height={f.wide.h}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         fetchpriority={priority ? "high" : undefined}
-        style={meta.objectPosition ? { objectPosition: meta.objectPosition } : undefined}
+        style={position ? { objectPosition: position } : undefined}
       />
     </picture>
-  ) : (
-    <PhotoPlaceholder id={id} decorative={decorative} />
   );
+  const frameClass = `photo ${tall ? "photo--tall" : ""} ${className}`;
   if (!caption) return <div className={frameClass}>{media}</div>;
   return (
     <figure className="photo-figure">
       <div className={frameClass}>{media}</div>
-      <figcaption className="caption">{caption === true ? meta.caption : caption}</figcaption>
+      <figcaption className="caption">{caption}</figcaption>
     </figure>
   );
 }

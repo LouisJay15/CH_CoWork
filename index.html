@@ -7,7 +7,9 @@
     <meta name="description" content="Professional hot desks on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel. Book a site inspection on WhatsApp." />
     <link rel="canonical" href="%VITE_SITE_URL%/" />
     <meta name="theme-color" content="#193f48" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="__BASE__brand/favicon.svg" type="image/svg+xml" />
+    <!-- Home hero (first tour frame): fetched alongside the scripts so it paints sooner on mobile. -->
+    <link rel="preload" as="image" type="image/avif" href="__BASE__media/frames/entrance-wide-1200.avif" imagesrcset="__BASE__media/frames/entrance-wide-640.avif 640w, __BASE__media/frames/entrance-wide-1200.avif 1200w, __BASE__media/frames/entrance-wide-1600.avif 1600w" imagesizes="(orientation: portrait) 134vh, 100vw" fetchpriority="high" />
 
     <!-- Static Home preview tags: WhatsApp, Facebook and LinkedIn previews do not run JavaScript. -->
     <meta property="og:type" content="website" />
@@ -16,13 +18,13 @@
     <meta property="og:title" content="Charles Hope Cowork | Hot desks at 81 Loop Street, Cape Town" />
     <meta property="og:description" content="Professional hot desks on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel. Book a site inspection on WhatsApp." />
     <meta property="og:url" content="%VITE_SITE_URL%/" />
-    <meta property="og:image" content="%VITE_SITE_URL%/images/01-entrance-live-work-stay.jpg" />
-    <meta property="og:image:width" content="1792" />
-    <meta property="og:image:height" content="1008" />
+    <meta property="og:image" content="%VITE_SITE_URL%/media/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Charles Hope Cowork | Hot desks at 81 Loop Street, Cape Town" />
     <meta name="twitter:description" content="Professional hot desks on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel. Book a site inspection on WhatsApp." />
-    <meta name="twitter:image" content="%VITE_SITE_URL%/images/01-entrance-live-work-stay.jpg" />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/media/og-image.jpg" />
 
 
     <script type="application/ld+json">
@@ -44,7 +46,7 @@
         },
         "containedInPlace": { "@type": "Hotel", "name": "Charles Hope", "description": "A 41-room boutique hotel" },
         "priceRange": "R200-R4000",
-        "image": ["%VITE_SITE_URL%/images/01-entrance-live-work-stay.jpg"]
+        "image": ["%VITE_SITE_URL%/media/og-image.jpg"]
       }
     </script>
   </head>

@@ -1,7 +1,6 @@
 node_modules/
 dist/
 dist-demo/
-src/generated/
 *.local
 .env.local
 .DS_Store
@@ -10,3 +9,6 @@ api/.venv/
 api/.env
 __pycache__/
 .pytest_cache/
+
+# Original photographs (staff appear in some; build sources only)
+assets/source/

@@ -9,8 +9,7 @@ import AnchorLink from "../components/AnchorLink.jsx";
 import Photo from "../components/Photo.jsx";
 import { PriceNote } from "../components/Notes.jsx";
 import { ArrowDown, ArrowRight } from "../components/Icons.jsx";
-import SplitText from "../reactbits/SplitText.jsx";
-import FadeContent from "../reactbits/FadeContent.jsx";
+import { FadeContent, SplitText } from "../reactbits/lazy.jsx";
 import { useReducedMotion } from "../lib/media.js";
 import { useLastQuote } from "../lib/quoteStore.js";
 
@@ -105,7 +104,7 @@ export default function Home() {
               </div>
             </div>
           </FadeContent>
-          <Photo id="07-reception-charleshope-wall" tall />
+          <Photo id="lws-close" tall />
         </div>
       </section>
 

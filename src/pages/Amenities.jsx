@@ -1,14 +1,14 @@
 import Page from "../components/Page.jsx";
 import PageHeader from "../components/PageHeader.jsx";
 import WhatsAppButton from "../components/WhatsAppButton.jsx";
-import Photo from "../components/Photo.jsx";
+import Photo, { PhotoPlaceholder } from "../components/Photo.jsx";
 import { PriceNote } from "../components/Notes.jsx";
-import FadeContent from "../reactbits/FadeContent.jsx";
+import { FadeContent } from "../reactbits/lazy.jsx";
 
 const ROOMS = [
-  { photo: "02-meeting-room-screen", title: "Boardrooms", room: "boardroom", text: "Three boardrooms. R1,500 for four hours, or R4,000 for a full day." },
-  { photo: "03-glass-meeting-pod", title: "Glass meeting pod", room: "pod", text: "Included in the desk rates, with no separate charge." },
-  { photo: "04-phone-booths", title: "Phone booths", room: "booth", text: "Included in the desk rates, with no separate charge." },
+  { photo: "boardroom", title: "Boardrooms", room: "boardroom", text: "Three boardrooms. R1,500 for four hours, or R4,000 for a full day." },
+  { photo: null, title: "Glass meeting pod", room: "pod", text: "Included in the desk rates, with no separate charge." },
+  { photo: "pod-inside", title: "Phone booths (call pods)", room: "booth", text: "Included in the desk rates, with no separate charge." },
 ];
 
 export default function Amenities() {
@@ -29,8 +29,8 @@ export default function Amenities() {
             </div>
           </FadeContent>
           <div className="grid grid--2">
-            <Photo id="05-open-plan-desks" caption />
-            <Photo id="06-lounge-city-view" caption />
+            <Photo id="open-1" caption="Open-plan desks" sizes="(min-width: 640px) 50vw, 100vw" />
+            <Photo id="kitchen-2" caption="Kitchen" sizes="(min-width: 640px) 50vw, 100vw" />
           </div>
         </div>
       </section>
@@ -49,7 +49,7 @@ export default function Amenities() {
           <ul className="grid grid--3" style={{ listStyle: "none", padding: 0 }}>
             {ROOMS.map((r) => (
               <li key={r.title} className="card room-card">
-                <Photo id={r.photo} />
+                {r.photo ? <Photo id={r.photo} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" /> : <PhotoPlaceholder label={r.title} />}
                 <div className="room-card__body">
                   <h3 className="h3">{r.title}</h3>
                   <p>{r.text}</p>
@@ -80,7 +80,7 @@ export default function Amenities() {
               <p>
                 You are working inside a 41-room boutique hotel. Please use hotel areas with the same care as other guests, and follow hotel rules on access, noise and visitors. Corporate accommodation rates are available; ask us on WhatsApp.
               </p>
-              <Photo id="01-entrance-live-work-stay" caption="Arrival" />
+              <Photo id="lws-close" caption="Arrival" />
             </div>
           </FadeContent>
         </div>

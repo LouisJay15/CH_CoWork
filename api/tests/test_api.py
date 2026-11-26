@@ -47,6 +47,8 @@ def site_dir(tmp_path):
     (tmp_path / "assets").mkdir()
     (tmp_path / "index.html").write_text("<!doctype html><title>Charles Hope Cowork</title>")
     (tmp_path / "assets" / "app.js").write_text("console.log(1)")
+    import gzip
+    (tmp_path / "assets" / "app.js.gz").write_bytes(gzip.compress(b"console.log(1)"))
     return tmp_path
 
 
@@ -221,10 +223,14 @@ def test_site_routes_and_headers(site_dir):
         r = client.get(path)
         assert r.status_code == 200 and "Charles Hope Cowork" in r.text
         assert "frame-ancestors 'none'" in r.headers["content-security-policy"]
-        assert "media-src 'self' blob:" in r.headers["content-security-policy"]
+        assert "media-src 'self'" in r.headers["content-security-policy"]
         assert r.headers["x-frame-options"] == "DENY"
-    asset = client.get("/assets/app.js")
+    asset = client.get("/assets/app.js", headers={"Accept-Encoding": "gzip"})
     assert asset.status_code == 200 and "immutable" in asset.headers["cache-control"]
+    assert asset.headers["content-encoding"] == "gzip" and asset.text == "console.log(1)"
+    assert "javascript" in asset.headers["content-type"]
+    plain = client.get("/assets/app.js", headers={"Accept-Encoding": "identity"})
+    assert "content-encoding" not in plain.headers and plain.text == "console.log(1)"
     assert client.get("/api/nope").status_code == 404
     traversal = client.get("/..%2F..%2Fetc%2Fpasswd")
     assert "root:" not in traversal.text

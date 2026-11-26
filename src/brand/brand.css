@@ -1,0 +1,42 @@
+/*
+ * BRAND TOKENS: PLACEHOLDER until the approved brand guideline arrives.
+ *
+ * This is the only stylesheet to edit for brand colours, fonts, corner radii and shadows.
+ * Every component reads these variables, so changing a value here restyles the whole site.
+ * Keep the variable names; change the values. See docs/branding.md.
+ *
+ * Contrast rules to re-check when the colours change (WCAG AA):
+ *   --on-primary on --primary          at least 4.5:1 (button text)
+ *   --text on --light and on white      at least 4.5:1
+ *   --deep and white on each other      at least 4.5:1
+ */
+:root {
+  /* Colours */
+  --primary: #ff6661; /* buttons, highlights */
+  --primary-hover: #ea5e5a;
+  --on-primary: #111111; /* text on --primary: never white on this coral */
+  --accent: #90dff5; /* selected chips, focus rings on dark */
+  --on-accent: #111111;
+  --deep: #193f48; /* headings, dark bands, footer accents */
+  --mid: #47656d; /* captions, labels */
+  --light: #e1f1f4; /* page background, light bands */
+  --white: #ffffff;
+  --ink: #111111;
+  --secondary: #454443; /* body text, footer */
+  --rule: color-mix(in srgb, var(--deep) 12%, transparent);
+
+  /* Fonts (the files are loaded in src/brand/fonts.js) */
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Shape */
+  --radius-card: 1rem;
+  --radius-card-lg: 1.5rem;
+  --radius-button: 0.75rem;
+  --radius-pill: 9999px;
+
+  /* Depth */
+  --shadow-card: 0 8px 24px color-mix(in srgb, var(--deep) 8%, transparent);
+  --shadow-card-hover: 0 12px 32px color-mix(in srgb, var(--deep) 12%, transparent);
+  --shadow-sticky: 0 -4px 16px color-mix(in srgb, var(--deep) 10%, transparent);
+}

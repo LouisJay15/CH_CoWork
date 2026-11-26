@@ -49,8 +49,8 @@ export default function Location() {
 
       <section className="section section--light" aria-label="Photographs">
         <div className="container grid grid--2">
-          <Photo id="07-reception-charleshope-wall" caption />
-          <Photo id="06-lounge-city-view" caption />
+          <Photo id="entrance-wide" caption="Entrance" sizes="(min-width: 640px) 50vw, 100vw" />
+          <Photo id="view-2" caption="The view from the 9th floor" sizes="(min-width: 640px) 50vw, 100vw" />
         </div>
       </section>
     </Page>

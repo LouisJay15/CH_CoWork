@@ -34,11 +34,27 @@ npm run dev
 
 ## Photographs and the scroll tour
 
-Until the photographs are added, each photo slot shows a labelled panel.
+The Home page tour is built from stills, not video: 16 photographs from the floor, in seven scenes (entrance, Live.
+Work. Stay., boardroom, open space, call pods, kitchen, view). As you scroll, each one zooms and pans toward its subject
+and blends into the next (a Ken Burns effect). On phones it uses tall crops, loads each frame just before it is needed,
+and moves with transforms only, so it stays smooth on mid-range phones.
 
-1. Put the seven photographs in `public/images/` with the names listed in `public/images/README.md`. WebP copies are made automatically on the next `npm run dev` or `npm run build`.
-2. For the Home scroll tour, add `public/video/cowork-tour.mp4` and `public/video/cowork-tour-poster.jpg` (how to cut them: `docs/build-plan.md`, section 10.2).
-3. Set the `time` of each stop in `src/lib/tour.js`. Until every stop has a time, the tour uses the photographs (it does on phones anyway).
+- Where each photo came from, and which were left out and why: `docs/media-sources.md`
+- Image pipeline: `npm run media` (scripts/build-media.mjs), AVIF with WebP fallback at 640, 1200 and 1600 px
+- Scenes and captions: `src/lib/tour.js`; motion: `src/lib/kenburns.js` and `src/components/ScrollTour.jsx`
+
+## Branding (placeholder)
+
+The logo, colours and fonts are placeholders until the approved brand guideline arrives. They all live in `src/brand/`
+and `public/brand/`: see `docs/branding.md` for the swap.
+
+## Speed
+
+Measured on an emulated mid-range phone over slow 4G (Lighthouse mobile settings): the Home page shows its main image in
+about 1.3 s, with 261 KB for the first load (JavaScript 110 KB, fonts 86 KB, hero image 59 KB). The whole tour adds
+about 0.5 MB, only as the visitor scrolls through it. How: AVIF images sized per screen, lazy loading below the fold,
+pages other than Home loaded on demand, the animation library loaded after first paint, fonts served from the site,
+and Brotli or gzip files written at build time (the Python app sends them).
 
 ## Set up Supabase
 
@@ -108,5 +124,6 @@ Runs the API tests: validation, spam protection, the stored row and the email, a
 - **Booking and question forms** are added (the plan's version 1 had none). The privacy notice and terms now say that requests are stored in Supabase and emailed.
 - **Fonts are part of the site** instead of being loaded from Google Fonts. They are the same DM Serif Display and Work Sans, so visitors' IP addresses are no longer sent to Google for fonts.
 - **Code style:** the site is plain JavaScript and CSS rather than TypeScript, Tailwind and shadcn/ui.
+- **Home tour from stills:** the scroll tour pans and zooms through photographs instead of scrubbing a video clip.
 - **Optional component not used:** React Bits Scroll Reveal (the plan lists it as optional).
 - **Brand mark:** the favicon is a simple CH monogram until a designed mark is supplied.

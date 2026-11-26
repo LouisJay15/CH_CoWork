@@ -4,13 +4,11 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "assets": "node scripts/build-assets.mjs",
-    "predev": "npm run assets",
     "dev": "vite",
-    "prebuild": "npm run assets",
     "build": "vite build",
-    "build:demo": "npm run assets && vite build --mode demo",
+    "build:demo": "vite build --mode demo",
     "preview": "vite preview",
+    "media": "node scripts/build-media.mjs",
     "test": "vitest run",
     "api": "cd api && .venv/bin/uvicorn app.main:app --reload --port 8000",
     "test:api": "cd api && .venv/bin/python -m pytest -q"

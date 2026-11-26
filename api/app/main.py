@@ -5,6 +5,7 @@ GET  /api/health     reports what is configured.
 Everything else serves the built site (../dist) with security headers, when it has been built.
 """
 import logging
+import mimetypes
 import secrets
 from pathlib import Path
 
@@ -31,7 +32,7 @@ CSP = "; ".join([
     "style-src 'self' 'unsafe-inline'",
     "font-src 'self'",
     "img-src 'self' data: https://maps.googleapis.com https://maps.gstatic.com https://*.google.com https://*.googleapis.com https://*.ggpht.com",
-    "media-src 'self' blob:",
+    "media-src 'self'",
     "frame-src https://www.google.com https://maps.google.com",
     "connect-src 'self'",
     "object-src 'none'",
@@ -200,16 +201,24 @@ def create_app(settings: Settings | None = None, store: EnquiryStore | None = No
     index = static_dir / "index.html"
 
     @app.api_route("/{full_path:path}", methods=["GET", "HEAD"], include_in_schema=False)
-    def site(full_path: str):
+    def site(full_path: str, request: Request):
         if full_path.startswith("api/"):
             raise HTTPException(status_code=404)
         if not index.exists():
             return JSONResponse(status_code=404, content={"detail": "The site has not been built. Run npm run build."})
         candidate = (static_dir / full_path).resolve()
-        if full_path and candidate.is_file() and candidate.is_relative_to(static_dir):
-            headers = {"Cache-Control": "public, max-age=31536000, immutable"} if full_path.startswith("assets/") else None
-            return FileResponse(candidate, headers=headers)
-        return FileResponse(index, headers={"Cache-Control": "no-cache"})
+        if not (full_path and candidate.is_file() and candidate.is_relative_to(static_dir)):
+            candidate = index
+        immutable = full_path.startswith(("assets/", "media/"))
+        headers = {"Cache-Control": "public, max-age=31536000, immutable" if immutable else "no-cache"}
+        # Send the precompressed copy written at build time when the browser accepts it.
+        accepted = request.headers.get("accept-encoding", "")
+        media_type = mimetypes.guess_type(candidate.name)[0] or "application/octet-stream"
+        for encoding, suffix in (("br", ".br"), ("gzip", ".gz")):
+            packed = candidate.with_name(candidate.name + suffix)
+            if encoding in accepted and packed.is_file():
+                return FileResponse(packed, media_type=media_type, headers={**headers, "Content-Encoding": encoding, "Vary": "Accept-Encoding"})
+        return FileResponse(candidate, media_type=media_type, headers=headers)
 
     return app
 
