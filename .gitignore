@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-demo/
+src/generated/
+*.local
+.env.local
+.DS_Store
+# Python
+api/.venv/
+api/.env
+__pycache__/
+.pytest_cache/
