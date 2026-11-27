@@ -89,9 +89,11 @@ In production, the API refuses requests with a clear message if Supabase or emai
 
 ### GitHub Pages (the site only)
 
-The workflow in `.github/workflows/pages.yml` builds the site and publishes it to
-**https://louisjay15.github.io/CH_CoWork/** every time `main` changes. One-time setup: in the repository,
-Settings > Pages > Build and deployment > Source: **GitHub Actions**. (Pages on the free plan needs a public repository.)
+The site is at **https://louisjay15.github.io/CH_CoWork/**. The workflow in `.github/workflows/pages.yml` builds it
+every time `main` changes and puts the built files on the `gh-pages` branch (never edit that branch by hand). One-time
+setup: in the repository, Settings > Pages > Build and deployment > Source: **Deploy from a branch**, Branch:
+**gh-pages**, Folder: **/ (root)**. (Pages on the free plan needs a public repository.) `main` itself is not published:
+its root holds the unbuilt source, and `docs/` holds the project notes.
 
 Pages can only serve files, so it cannot run the Python API. On Pages the booking and question forms check the details,
 then open WhatsApp or the visitor's email app with the request written out, ready to send; nothing is stored, and the
