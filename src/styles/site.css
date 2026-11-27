@@ -978,6 +978,64 @@ main {
 .marquee__text {
   font-family: var(--font-display);
 }
+/* Phones and tablets: a sliding strip moved by the graphics chip (no script each frame, no mask). */
+.marquee__strip {
+  position: relative;
+  overflow: hidden;
+}
+.marquee__strip::before,
+.marquee__strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 32px;
+  pointer-events: none;
+}
+.marquee__strip::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--deep), transparent);
+}
+.marquee__strip::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--deep), transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-slide 26s linear infinite;
+}
+.marquee__run,
+.marquee__item {
+  display: flex;
+  align-items: center;
+}
+.marquee__item {
+  gap: 0.6em;
+  padding-right: 0.6em;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ivory);
+}
+.marquee__mark {
+  color: var(--accent);
+  font-size: 0.6em;
+}
+@keyframes marquee-slide {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
 @media (min-width: 768px) {
   .marquee__inner {
     height: 132px;
@@ -1006,6 +1064,11 @@ main {
 .floor-gallery .ag-panel {
   min-height: 44px;
   background: var(--deep);
+  will-change: auto; /* the gallery's default reserves a graphics layer per photo: too much memory on phones */
+}
+.floor-gallery .ag-panel__media {
+  will-change: auto;
+  filter: none; /* grayscale is off, so no filter layer is needed */
 }
 .floor-gallery .ag-panel__text {
   font-family: var(--font-display);

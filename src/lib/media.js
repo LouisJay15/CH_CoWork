@@ -11,6 +11,8 @@ export function useMediaQuery(query) {
 
 export const useReducedMotion = () => useMediaQuery("(prefers-reduced-motion: reduce)");
 export const useIsDesktop = () => useMediaQuery("(min-width: 768px)");
+/** True on a computer with a mouse or trackpad; false on phones and tablets. Heavier effects run only here. */
+export const useFinePointer = () => useMediaQuery("(hover: hover) and (pointer: fine)");
 
 /** True when the visitor asked to save data, or the connection is 2g. */
 export function useSaveData() {
