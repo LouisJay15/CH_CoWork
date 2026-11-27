@@ -1,0 +1,1 @@
+import{j as e}from"./index-Dpoq6_7W.js";function i({eyebrow:a,title:s,children:n}){return e.jsx("header",{className:"page-head",children:e.jsx("div",{className:"container",children:e.jsxs("div",{className:"page-head__inner",children:[a&&e.jsx("span",{className:"overline",children:a}),e.jsx("h1",{className:"h1",children:s}),n]})})})}export{i as P};
