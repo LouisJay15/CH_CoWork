@@ -87,15 +87,31 @@ In production, the API refuses requests with a clear message if Supabase or emai
 
 ## Deploy
 
-The simplest setup is one service: the Python app serves the built site and the API from the same address, with the security headers from the build plan (CSP, frame blocking, nosniff, referrer and permissions policies).
+### GitHub Pages (the site only)
+
+The workflow in `.github/workflows/pages.yml` builds the site and publishes it to
+**https://louisjay15.github.io/CH_CoWork/** every time `main` changes. One-time setup: in the repository,
+Settings > Pages > Build and deployment > Source: **GitHub Actions**. (Pages on the free plan needs a public repository.)
+
+Pages can only serve files, so it cannot run the Python API. On Pages the booking and question forms check the details,
+then open WhatsApp or the visitor's email app with the request written out, ready to send; nothing is stored, and the
+privacy notice says so. Pages also cannot send the extra security headers. To build the same thing locally:
+`npm run build:pages` (output in `dist-pages/`).
+
+### Full setup (site, bookings to Supabase, email)
+
+The Python app serves the built site and the API from the same address, with the security headers from the build plan
+(CSP, frame blocking, nosniff, referrer and permissions policies), and sends the precompressed files.
 
 ```bash
 docker build -f api/Dockerfile -t charleshope-cowork .
 ```
 
-Run that image on any container host (Render, Railway, Fly.io, Google Cloud Run and similar), with the settings above as environment variables. It listens on `$PORT` (default 8000). `GET /api/health` shows whether Supabase and email are configured.
+Run that image on any container host (Render, Railway, Fly.io, Google Cloud Run and similar), with the settings above as
+environment variables. It listens on `$PORT` (default 8000). `GET /api/health` shows whether Supabase and email are configured.
 
-If the site is hosted somewhere else (for example on Lovable), set `VITE_API_BASE` to the API's address before building the site, and add the site's address to `ALLOWED_ORIGINS` on the API.
+If the site stays on GitHub Pages while the API runs elsewhere, build with `VITE_FORMS=api` and `VITE_API_BASE` set to
+the API's address, and add the Pages address to `ALLOWED_ORIGINS` on the API.
 
 ## Offline demo
 
@@ -103,7 +119,7 @@ If the site is hosted somewhere else (for example on Lovable), set `VITE_API_BAS
 npm run build:demo
 ```
 
-This makes `dist-demo/index.html`, a single file that opens straight from disk with no server. In this version the forms show a "not sent" message instead of sending.
+This makes `dist-demo/index.html`, a single file that opens straight from disk with no server. As on GitHub Pages, the forms hand the request to WhatsApp or email.
 
 ## Tests
 

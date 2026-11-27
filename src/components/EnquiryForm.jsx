@@ -2,7 +2,8 @@ import { useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { DESK_MAX, DESK_MIN, DAYS_MIN, SLOTS_MIN, estimate, formatRand } from "../lib/calculator.js";
 import { EnquiryError, sendEnquiry } from "../lib/api.js";
-import { DEMO_FORMS } from "../lib/site.js";
+import { FORMS_MODE } from "../lib/site.js";
+import { buildHandoff } from "../lib/handoff.js";
 import { ChipGroup, NumberInput } from "./Controls.jsx";
 import { PriceNote } from "./Notes.jsx";
 import WhatsAppButton from "./WhatsAppButton.jsx";
@@ -164,6 +165,26 @@ export default function EnquiryForm({ page, kinds = ["booking", "question"], ini
         preferred_time: USES_TIME.includes(b.product) && b.time ? b.time : null,
       });
     }
+    if (FORMS_MODE === "handoff") {
+      const product = BOOKING_PRODUCTS.find((p) => p.value === b.product);
+      setStatus({
+        state: "handoff",
+        ...buildHandoff({
+          kind,
+          page,
+          what: est ? est.summary : product?.label.replace(/^(A|An|The) /, "") ?? "",
+          estimate: est?.total,
+          date: isBooking ? b.date : null,
+          dateLabel: b.product === "monthly-desk" ? "Start date" : "Preferred date",
+          time: isBooking && USES_TIME.includes(b.product) ? b.time : null,
+          name: payload.name,
+          email: payload.email,
+          phone: payload.phone,
+          message: payload.message,
+        }),
+      });
+      return;
+    }
     setStatus({ state: "sending" });
     try {
       const res = await sendEnquiry(payload);
@@ -172,6 +193,26 @@ export default function EnquiryForm({ page, kinds = ["booking", "question"], ini
       setStatus({ state: "error", message: err instanceof EnquiryError ? err.message : "Something went wrong. Please message us on WhatsApp." });
     }
   };
+
+  if (status.state === "handoff") {
+    return (
+      <div className="alert" role="status">
+        <h3>{isBooking ? "Your booking request is ready to send" : "Your question is ready to send"}</h3>
+        <p>Choose how to send it. WhatsApp or your email app opens with everything filled in: press send there. This site does not store it.</p>
+        <div className="actions" style={{ marginTop: 12 }}>
+          <a className="btn btn--primary" href={status.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Send on WhatsApp, opens WhatsApp in a new tab">
+            Send on WhatsApp
+          </a>
+          <a className="btn btn--secondary" href={status.mailto}>
+            Send by email
+          </a>
+          <button type="button" className="text-button" onClick={() => setStatus({ state: "idle" })}>
+            Edit
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (status.state === "sent") {
     return (
@@ -354,7 +395,7 @@ export default function EnquiryForm({ page, kinds = ["booking", "question"], ini
         <button type="submit" className="btn btn--primary" disabled={status.state === "sending"}>
           {status.state === "sending" ? "Sending..." : isBooking ? "Send booking request" : "Send question"}
         </button>
-        {DEMO_FORMS && <span className="caption">Demo build: forms are not sent.</span>}
+        {FORMS_MODE === "handoff" && <span className="caption">You send it from WhatsApp or your email app.</span>}
       </div>
     </form>
   );

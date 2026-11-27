@@ -15,7 +15,10 @@ const Privacy = lazy(() => import("./pages/Privacy.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 
 // The offline demo build uses hash routing so it can open straight from disk.
-const Router = import.meta.env.VITE_ROUTER === "hash" ? HashRouter : BrowserRouter;
+const HASH = import.meta.env.VITE_ROUTER === "hash";
+const Router = HASH ? HashRouter : BrowserRouter;
+// On GitHub Pages the site lives under /<repository>/.
+const basename = HASH ? undefined : import.meta.env.BASE_URL.replace(/\/$/, "") || undefined;
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -27,7 +30,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <Router basename={basename} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ScrollToTop />
       <Suspense fallback={<div style={{ minHeight: "100svh" }} />}>
       <Routes>

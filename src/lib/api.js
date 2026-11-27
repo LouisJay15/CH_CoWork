@@ -1,13 +1,9 @@
-import { API_BASE, DEMO_FORMS } from "./site.js";
+import { API_BASE } from "./site.js";
 
 export class EnquiryError extends Error {}
 
 /** Send a booking request or a question to the Python API, which stores it in Supabase and emails it. */
 export async function sendEnquiry(payload) {
-  if (DEMO_FORMS) {
-    await new Promise((r) => setTimeout(r, 600));
-    return { ok: true, reference: "DEMO", demo: true };
-  }
   let res;
   try {
     res = await fetch(`${API_BASE}/api/enquiries`, {

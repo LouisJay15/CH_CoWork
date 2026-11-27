@@ -20,8 +20,13 @@ export const MAPS_EMBED_URL =
 
 /** Where the booking API lives. Empty means the same origin. */
 export const API_BASE = (env.VITE_API_BASE || "").replace(/\/+$/, "");
-/** The offline demo build shows the forms but does not send them. */
-export const DEMO_FORMS = env.VITE_DEMO_FORMS === "true";
+/**
+ * How the booking and question forms send:
+ *   "api"     to the Python API, which stores the request in Supabase and emails it (the full setup)
+ *   "handoff" no server (GitHub Pages, offline demo): the form opens WhatsApp or the visitor's email app
+ *             with the request written out, ready to send. Nothing is stored by the site.
+ */
+export const FORMS_MODE = env.VITE_FORMS === "handoff" ? "handoff" : "api";
 
 /** Path to a file in /public, respecting the build's base path. */
 export const asset = (path) => `${env.BASE_URL ?? "/"}${String(path).replace(/^\/+/, "")}`;

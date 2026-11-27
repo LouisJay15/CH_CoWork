@@ -11,7 +11,8 @@
     "media": "node scripts/build-media.mjs",
     "test": "vitest run",
     "api": "cd api && .venv/bin/uvicorn app.main:app --reload --port 8000",
-    "test:api": "cd api && .venv/bin/python -m pytest -q"
+    "test:api": "cd api && .venv/bin/python -m pytest -q",
+    "build:pages": "vite build --mode pages"
   },
   "dependencies": {
     "@fontsource/dm-serif-display": "^5.3.0",

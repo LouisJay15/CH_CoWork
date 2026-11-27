@@ -1,5 +1,6 @@
 import Page from "../components/Page.jsx";
 import PageHeader from "../components/PageHeader.jsx";
+import { FORMS_MODE } from "../lib/site.js";
 
 export default function Privacy() {
   return (
@@ -13,11 +14,17 @@ export default function Privacy() {
             <br />
             Contact: WhatsApp +27 68 947 8807, telephone 021 600 6826, and louis@charleshope.co.uk
           </p>
+          {FORMS_MODE === "api" ? (
+            <p>
+              What is collected: if you send a booking request or a question through this site, we receive your name, your email address, any phone number you give, and the details of your request. These are stored in our database, hosted by Supabase, and sent by email to louis@charleshope.co.uk so that we can reply. If you message us on WhatsApp, the conversation takes place on WhatsApp, under WhatsApp's own terms. If you call us, we receive your phone number. If you email us, we receive the contents of that email. Analytics are off.
+            </p>
+          ) : (
+            <p>
+              What is collected: this site does not store anything you type. The booking and question forms open WhatsApp or your email app with your message written out, and you send it from there. When you do, we receive what you send: on WhatsApp, under WhatsApp's own terms; by email, the contents of that email. If you call us, we receive your phone number. Analytics are off.
+            </p>
+          )}
           <p>
-            What is collected: if you send a booking request or a question through this site, we receive your name, your email address, any phone number you give, and the details of your request. These are stored in our database, hosted by Supabase, and sent by email to louis@charleshope.co.uk so that we can reply. If you message us on WhatsApp, the conversation takes place on WhatsApp, under WhatsApp's own terms. If you call us, we receive your phone number. If you email us, we receive the contents of that email. Analytics are off.
-          </p>
-          <p>
-            Third parties: the Location page shows a Google Maps map. When it loads, Google receives your device's IP address and may set its own cookies, under Google's privacy policy. Supabase, Google and our email provider may store or process data outside South Africa.
+            Third parties: the Location page shows a Google Maps map. When it loads, Google receives your device's IP address and may set its own cookies, under Google's privacy policy. Google, WhatsApp, our email provider and (for requests sent through the site) Supabase may store or process data outside South Africa.
           </p>
           <p>Why: to answer your enquiry, arrange a visit or booking.</p>
           <p>Sharing: not sold. Shared only where needed to provide the service (for example the hotel desk for a hotel-guest booking).</p>

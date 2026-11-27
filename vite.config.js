@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { brotliCompressSync, constants, gzipSync } from "node:zlib";
 import { defineConfig, loadEnv } from "vite";
@@ -66,6 +66,28 @@ function precompress() {
   };
 }
 
+// GitHub Pages only serves files: give every page its own index.html (so links and refreshes work),
+// a 404.html that loads the site, and .nojekyll so Pages serves the files as they are.
+function pagesRoutes() {
+  let outDir = "dist-pages";
+  return {
+    name: "pages-routes",
+    apply: "build",
+    configResolved(config) {
+      outDir = config.build.outDir;
+    },
+    closeBundle() {
+      const index = join(outDir, "index.html");
+      for (const route of ROUTES.filter((r) => r !== "/")) {
+        mkdirSync(join(outDir, route), { recursive: true });
+        copyFileSync(index, join(outDir, route, "index.html"));
+      }
+      copyFileSync(index, join(outDir, "404.html"));
+      writeFileSync(join(outDir, ".nojekyll"), "");
+    },
+  };
+}
+
 // index.html uses __BASE__ for files in /public, so the same HTML works at "/" and in the offline demo ("./").
 function baseInHtml(base) {
   return { name: "base-in-html", transformIndexHtml: (html) => html.replaceAll("__BASE__", base) };
@@ -75,11 +97,15 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const siteUrl = (env.VITE_SITE_URL || "https://YOUR-PROJECT.lovable.app").replace(/\/+$/, "");
   const demo = mode === "demo";
+  const pages = mode === "pages";
+  // The demo build is a single HTML file that opens from disk, so its asset paths are relative.
+  // The GitHub Pages build lives under /<repository>/.
+  const base = demo ? "./" : pages ? env.VITE_BASE || "/" : "/";
+  const extra = demo ? [viteSingleFile()] : pages ? [pagesRoutes()] : [precompress()];
   return {
-    // The demo build is a single HTML file that opens from disk, so its asset paths are relative.
-    base: demo ? "./" : "/",
-    plugins: [react(), baseInHtml(demo ? "./" : "/"), seoFiles(siteUrl), ...(demo ? [viteSingleFile()] : [precompress()])],
-    build: { outDir: demo ? "dist-demo" : "dist", emptyOutDir: true },
+    base,
+    plugins: [react(), baseInHtml(base), seoFiles(siteUrl), ...extra],
+    build: { outDir: demo ? "dist-demo" : pages ? "dist-pages" : "dist", emptyOutDir: true },
     server: {
       proxy: { "/api": { target: env.API_PROXY_TARGET || "http://127.0.0.1:8000", changeOrigin: true } },
     },
