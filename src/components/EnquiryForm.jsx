@@ -220,7 +220,7 @@ export default function EnquiryForm({ page, kinds = ["booking", "question"], ini
         <h3>{isBooking ? "Thank you, your booking request is with us" : "Thank you, your question is with us"}</h3>
         {status.demo ? (
           <p>
-            <strong>Demo build:</strong> this request was not sent. On the live site it is saved and emailed to Charles Hope Cowork.
+            <strong>Demo build:</strong> this request was not sent. On the live site it is saved and emailed to Charles Hope Coworking Space.
           </p>
         ) : (
           <p>
@@ -371,7 +371,7 @@ export default function EnquiryForm({ page, kinds = ["booking", "question"], ini
         <div className="checkbox">
           <input id={fid("consent")} type="checkbox" checked={contact.consent} onChange={(e) => setC({ consent: e.target.checked })} {...invalid("consent")} />
           <label htmlFor={fid("consent")}>
-            I agree that Charles Hope Cowork may store my details and contact me about this request, as set out in the{" "}
+            I agree that Charles Hope Coworking Space may store my details and contact me about this request, as set out in the{" "}
             <Link className="link" to="/privacy">
               privacy notice
             </Link>

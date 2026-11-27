@@ -1,4 +1,4 @@
-"""Charles Hope Cowork booking API.
+"""Charles Hope Coworking Space booking API.
 
 POST /api/enquiries  stores a booking request or question in Supabase and emails it to louis@charleshope.co.uk.
 GET  /api/health     reports what is configured.
@@ -82,7 +82,7 @@ def client_key(request: Request, settings: Settings) -> str:
 def create_app(settings: Settings | None = None, store: EnquiryStore | None = None, mailer: Mailer | None = None) -> FastAPI:
     settings = settings or get_settings()
     app = FastAPI(
-        title="Charles Hope Cowork API",
+        title="Charles Hope Coworking Space API",
         docs_url="/api/docs" if settings.environment == "development" else None,
         redoc_url=None,
         openapi_url="/api/openapi.json" if settings.environment == "development" else None,

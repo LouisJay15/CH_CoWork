@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="stack" style={{ "--stack": "12px" }}>
-            <h2>Charles Hope Cowork</h2>
+            <h2>Charles Hope Coworking Space</h2>
             <p>81 Loop Street, 9th floor, Cape Town</p>
             <p>Inside the Charles Hope hotel, a 41-room boutique hotel. Noah is the on-site restaurant.</p>
           </div>

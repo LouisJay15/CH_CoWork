@@ -8,7 +8,7 @@ import WhatsAppButton from "../components/WhatsAppButton.jsx";
 import { PriceNote } from "../components/Notes.jsx";
 
 export const FAQ = [
-  ["Where are you?", "Charles Hope Cowork is on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel."],
+  ["Where are you?", "Charles Hope Coworking Space is on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel."],
   ["What is the difference between Basic and Screen?", "A Screen desk is a Basic desk with two monitors."],
   ["Do the prices include VAT?", "Yes. All prices on this site are shown incl. VAT. Please ask if you need a tax invoice."],
   ["I am staying at the hotel. Can I use a desk?", "Yes. Hotel guests can use the workspace at R200 a day, with full access to cowork amenities except the Noah discount."],

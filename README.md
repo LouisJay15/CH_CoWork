@@ -1,6 +1,6 @@
-# Charles Hope Cowork
+# Charles Hope Coworking Space
 
-The marketing site and booking requests for Charles Hope Cowork, 81 Loop Street, 9th floor, Cape Town.
+The marketing site and booking requests for Charles Hope Coworking Space, 81 Loop Street, 9th floor, Cape Town.
 
 - **Site:** React with plain JavaScript and CSS, built with Vite. Motion uses three React Bits components (JS + CSS versions) in `src/reactbits/`.
 - **Bookings and questions:** a Python (FastAPI) API in `api/`. Each request is saved to a Supabase table and emailed to louis@charleshope.co.uk, with the visitor as Reply-To.
@@ -32,27 +32,30 @@ Start the site in a second terminal, then open http://localhost:5173:
 npm run dev
 ```
 
-## Photographs and the scroll tour
+## Home page: photographs and effects
 
-The Home page tour is built from stills, not video: 16 photographs from the floor, in seven scenes (entrance, Live.
-Work. Stay., boardroom, open space, call pods, kitchen, view). As you scroll, each one zooms and pans toward its subject
-and blends into the next (a Ken Burns effect). On phones it uses tall crops, loads each frame just before it is needed,
-and moves with transforms only, so it stays smooth on mid-range phones.
+The Home page uses React Bits effects (`src/reactbits/`) rather than a scroll tour:
 
-- Where each photo came from, and which were left out and why: `docs/media-sources.md`
-- Image pipeline: `npm run media` (scripts/build-media.mjs), AVIF with WebP fallback at 640, 1200 and 1600 px
-- Scenes and captions: `src/lib/tour.js`; motion: `src/lib/kenburns.js` and `src/components/ScrollTour.jsx`
+- **The 9th floor**: six photographs (entrance, Live. Work. Stay., open-plan desks, boardroom, glass meeting pod,
+  call pods) in an expanding gallery. Desktop: point at a photo to open it. Phone: tap. (`src/lib/spaces.js`)
+- **"Live. Work. Stay."** scrolls across a navy band under the hero; visitors can drag it.
+- **Hotel section**: a fan of photos that bounces in and parts when you point at one.
+- **Main WhatsApp buttons**: a coral light runs round the edge.
 
-## Branding (placeholder)
+Each effect loads only when the visitor scrolls near it. Where the photos came from: `docs/media-sources.md`.
+Image pipeline: `npm run media` (scripts/build-media.mjs), AVIF with WebP fallback at 640, 1200 and 1600 px.
 
-The logo, colours and fonts are placeholders until the approved brand guideline arrives. They all live in `src/brand/`
-and `public/brand/`: see `docs/branding.md` for the swap.
+## Branding
+
+The site follows the Charles Hope Coworking Space brand guidelines: coral, navy and ivory, Playfair Display and
+DM Sans, and the CharlesHope wordmark with COWORKING SPACE. Everything brand-specific lives in `src/brand/` and
+`public/brand/`: see `docs/branding.md`.
 
 ## Speed
 
 Measured on an emulated mid-range phone over slow 4G (Lighthouse mobile settings): the Home page shows its main image in
-about 1.3 s, with 261 KB for the first load (JavaScript 110 KB, fonts 86 KB, hero image 59 KB). The whole tour adds
-about 0.5 MB, only as the visitor scrolls through it. How: AVIF images sized per screen, lazy loading below the fold,
+about 1.3 s, with 259 KB for the first load (JavaScript 118 KB, fonts 64 KB, images 69 KB). The gallery and the
+other effects add their photos and code only as the visitor scrolls to them. How: AVIF images sized per screen, lazy loading below the fold,
 pages other than Home loaded on demand, the animation library loaded after first paint, fonts served from the site,
 and Brotli or gzip files written at build time (the Python app sends them).
 
@@ -140,8 +143,8 @@ Runs the API tests: validation, spam protection, the stored row and the email, a
 ## Changes from the build plan
 
 - **Booking and question forms** are added (the plan's version 1 had none). The privacy notice and terms now say that requests are stored in Supabase and emailed.
-- **Fonts are part of the site** instead of being loaded from Google Fonts. They are the same DM Serif Display and Work Sans, so visitors' IP addresses are no longer sent to Google for fonts.
+- **Fonts are part of the site** instead of being loaded from Google Fonts. They are Playfair Display and DM Sans, as in the brand guidelines, so visitors' IP addresses are not sent to Google for fonts.
 - **Code style:** the site is plain JavaScript and CSS rather than TypeScript, Tailwind and shadcn/ui.
-- **Home tour from stills:** the scroll tour pans and zooms through photographs instead of scrubbing a video clip.
+- **Home effects instead of a video tour:** an expanding photo gallery and other React Bits effects, rather than scrubbing a video clip.
 - **Optional component not used:** React Bits Scroll Reveal (the plan lists it as optional).
-- **Brand mark:** the favicon is a simple CH monogram until a designed mark is supplied.
+- **Brand:** applied from the Charles Hope Coworking Space brand guidelines (see docs/branding.md); the logo files are taken from the guideline PDF until vector files are supplied.

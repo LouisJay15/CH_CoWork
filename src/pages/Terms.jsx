@@ -8,7 +8,7 @@ export default function Terms() {
       <PageHeader title="Terms and house rules" />
       <section className="section section--white">
         <div className="container prose" style={{ maxWidth: "48rem" }}>
-          <p>Charles Hope Cowork is operated by CHARLES HOPE SA (PTY) LTD.</p>
+          <p>Charles Hope Coworking Space is operated by CHARLES HOPE SA (PTY) LTD.</p>
           <p>
             A message on WhatsApp, a phone call, an email or a request sent through this site is an enquiry, not a completed booking. A booking is confirmed when we write back to agree the dates, the rate and how to pay.
           </p>

@@ -8,9 +8,9 @@ export default function Privacy() {
       <PageHeader title="Privacy" />
       <section className="section section--white">
         <div className="container prose" style={{ maxWidth: "48rem" }}>
-          <p>Charles Hope Cowork is operated by CHARLES HOPE SA (PTY) LTD, the responsible party for this notice.</p>
+          <p>Charles Hope Coworking Space is operated by CHARLES HOPE SA (PTY) LTD, the responsible party for this notice.</p>
           <p>
-            Address: Charles Hope Cowork, 81 Loop Street, 9th floor, Cape Town
+            Address: Charles Hope Coworking Space, 81 Loop Street, 9th floor, Cape Town
             <br />
             Contact: WhatsApp +27 68 947 8807, telephone 021 600 6826, and louis@charleshope.co.uk
           </p>

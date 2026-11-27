@@ -3,66 +3,66 @@ export const PAGES = {
   home: {
     path: "/",
     name: "Home",
-    title: "Charles Hope Cowork | Hot desks at 81 Loop Street, Cape Town",
+    title: "Charles Hope Coworking Space | Hot desks at 81 Loop Street, Cape Town",
     description:
       "Professional hot desks on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel. Book a site inspection on WhatsApp.",
   },
   desks: {
     path: "/desks-and-pricing",
     name: "Desks and pricing",
-    title: "Desks and pricing | Charles Hope Cowork",
+    title: "Desks and pricing | Charles Hope Coworking Space",
     description:
       "Basic desks from R3,000 a month and R280 a day, Screen desks from R3,750 a month and R350 a day. Prices incl. VAT.",
   },
   dayPass: {
     path: "/day-pass",
     name: "Day pass",
-    title: "Day pass | Charles Hope Cowork",
-    description: "A day pass at Charles Hope Cowork: R280 for a Basic desk, R350 for a Screen desk. Book on WhatsApp.",
+    title: "Day pass | Charles Hope Coworking Space",
+    description: "A day pass at Charles Hope Coworking Space: R280 for a Basic desk, R350 for a Screen desk. Book on WhatsApp.",
   },
   hotelGuests: {
     path: "/hotel-guests",
     name: "Hotel guests",
-    title: "Hotel guests | Charles Hope Cowork",
+    title: "Hotel guests | Charles Hope Coworking Space",
     description: "Staying at the Charles Hope hotel? Use the cowork space at the R200 guest rate. Enquire on WhatsApp.",
   },
   amenities: {
     path: "/amenities",
     name: "Amenities",
-    title: "Amenities | Charles Hope Cowork",
+    title: "Amenities | Charles Hope Coworking Space",
     description:
       "Open-plan desks, three boardrooms, a glass pod, phone booths and a lounge with city views on the 9th floor at 81 Loop Street.",
   },
   location: {
     path: "/location",
     name: "Location",
-    title: "Location | Charles Hope Cowork, 81 Loop Street",
-    description: "Charles Hope Cowork is on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel.",
+    title: "Location | Charles Hope Coworking Space, 81 Loop Street",
+    description: "Charles Hope Coworking Space is on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel.",
   },
   faq: {
     path: "/faq",
     name: "FAQ",
-    title: "Questions | Charles Hope Cowork",
-    description: "VAT, day passes, hotel guest rates, coffee and how to book a site inspection at Charles Hope Cowork.",
+    title: "Questions | Charles Hope Coworking Space",
+    description: "VAT, day passes, hotel guest rates, coffee and how to book a site inspection at Charles Hope Coworking Space.",
   },
   book: {
     path: "/book",
     name: "Book",
-    title: "Book a site inspection | Charles Hope Cowork",
+    title: "Book a site inspection | Charles Hope Coworking Space",
     description:
-      "Message Charles Hope Cowork on WhatsApp at +27 68 947 8807 to book a site inspection and request a quote.",
+      "Message Charles Hope Coworking Space on WhatsApp at +27 68 947 8807 to book a site inspection and request a quote.",
   },
   terms: {
     path: "/terms",
     name: "Terms and house rules",
-    title: "Terms and house rules | Charles Hope Cowork",
-    description: "Terms and house rules for Charles Hope Cowork at 81 Loop Street, Cape Town.",
+    title: "Terms and house rules | Charles Hope Coworking Space",
+    description: "Terms and house rules for Charles Hope Coworking Space at 81 Loop Street, Cape Town.",
   },
   privacy: {
     path: "/privacy",
     name: "Privacy",
-    title: "Privacy | Charles Hope Cowork",
-    description: "How Charles Hope Cowork handles enquiry details and any site-usage data, in line with POPIA.",
+    title: "Privacy | Charles Hope Coworking Space",
+    description: "How Charles Hope Coworking Space handles enquiry details and any site-usage data, in line with POPIA.",
   },
 };
 

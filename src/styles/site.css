@@ -1,4 +1,4 @@
-/* Charles Hope Cowork: site styles. Plain CSS, no framework. Brand tokens: src/brand/brand.css. */
+/* Charles Hope Coworking Space: site styles. Plain CSS, no framework. Brand tokens: src/brand/brand.css. */
 
 :root {
   /* Layout (not brand). Brand colours, fonts, radii and shadows live in src/brand/brand.css. */
@@ -166,16 +166,25 @@ textarea {
 }
 
 .overline {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 0.75rem;
   line-height: 1.4;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--deep);
+}
+.overline::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
 }
 .on-dark .overline {
-  color: var(--accent);
+  color: var(--white);
 }
 
 .caption {
@@ -212,6 +221,7 @@ textarea {
 
 .section {
   padding: 40px 0;
+  overflow-x: clip; /* glows and fans from the React Bits effects stay inside the page */
 }
 @media (min-width: 768px) {
   .section {
@@ -315,7 +325,7 @@ main {
   gap: 10px;
   min-height: 44px;
   padding: 10px 24px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-button);
   border: 2px solid transparent;
   font-family: var(--font-sans);
   font-weight: 600;
@@ -338,6 +348,13 @@ main {
 }
 .btn--primary:hover {
   background: var(--primary-hover);
+}
+.on-dark .btn--primary {
+  background: var(--white);
+  color: var(--deep);
+}
+.on-dark .btn--primary:hover {
+  background: var(--ivory);
 }
 .btn--secondary {
   background: var(--white);
@@ -368,7 +385,7 @@ main {
   color: var(--deep);
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
@@ -562,29 +579,48 @@ main {
   gap: 16px;
   height: 100%;
 }
+/* Logo lockup: CharlesHope wordmark, COWORKING SPACE beneath (brand guideline). */
 .logo {
   display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  min-height: 44px;
+  flex-direction: column;
   align-items: center;
-  font-family: var(--font-display);
-  font-size: 1.375rem;
-  line-height: 1;
+  justify-content: center;
+  gap: 4px;
+  min-height: 44px;
   color: var(--deep);
   text-decoration: none;
+}
+.logo img {
+  display: block;
+  height: 24px;
+  width: auto;
+}
+.logo__descriptor {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-transform: uppercase;
   white-space: nowrap;
 }
-.logo__cowork {
-  font-family: var(--font-sans);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 4px 8px;
-  border-radius: var(--radius-pill);
-  background: var(--primary);
-  color: var(--on-primary);
+.logo__descriptor::before,
+.logo__descriptor::after {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: var(--accent);
+}
+@media (min-width: 768px) {
+  .logo img {
+    height: 28px;
+  }
+  .logo__descriptor {
+    font-size: 0.625rem;
+  }
 }
 .site-header--clear .logo {
   color: var(--white);
@@ -612,13 +648,13 @@ main {
 }
 .nav a:hover {
   text-decoration: underline;
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
 }
 .nav a[aria-current="page"] {
   text-decoration: underline;
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
 }
@@ -717,7 +753,7 @@ main {
   color: var(--ink);
   font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
 }
@@ -762,7 +798,7 @@ main {
 }
 .site-footer li a:hover,
 .footer-contact a:hover {
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--accent);
 }
 .footer-contact {
   font-style: normal;
@@ -838,12 +874,33 @@ main {
   object-fit: cover;
 }
 .hero__media img {
-  object-position: 47% 42%; /* keep the logo in view on tall phone screens */
+  object-position: 50% 45%; /* keep the CharlesHope sign in view on tall phone screens */
 }
+/* Phone: the photo fills the top half and fades into navy, so the heading never sits on the sign. */
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--deep) 55%, transparent) 0%, color-mix(in srgb, var(--deep) 65%, transparent) 45%, color-mix(in srgb, var(--deep) 82%, transparent) 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--deep) 45%, transparent) 0%,
+    transparent 28%,
+    transparent 55%,
+    var(--deep) 100%
+  );
+}
+@media (max-width: 767px) {
+  .hero__media {
+    bottom: auto;
+    height: 54svh;
+  }
+}
+/* Desktop: the photo fills the screen; navy shades only the left, behind the text. */
+@media (min-width: 768px) {
+  .hero__overlay {
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--deep) 78%, transparent) 0%, color-mix(in srgb, var(--deep) 40%, transparent) 42%, transparent 70%),
+      linear-gradient(180deg, color-mix(in srgb, var(--deep) 40%, transparent) 0%, transparent 22%, transparent 70%, color-mix(in srgb, var(--deep) 45%, transparent) 100%);
+  }
 }
 .hero__content {
   position: relative;
@@ -880,211 +937,98 @@ main {
   color: var(--white);
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 5px;
 }
 
-/* ---------- Scroll tour ---------- */
+/* ---------- Home: effects (React Bits) ---------- */
 
-.tour {
-  background: var(--deep);
-  color: var(--white);
-}
-.tour__head {
-  padding: 56px 0 32px;
-}
-@media (min-width: 768px) {
-  .tour__head {
-    padding: 80px 0 40px;
-  }
-}
-.tour__head-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 16px 32px;
-}
-.tour__head-row .section-head {
-  margin-bottom: 0;
-}
-/* Ken Burns tour: a pinned stage of stills, with scene captions scrolling over it. */
-.kb {
-  position: relative;
-  --span: 45svh; /* scroll per frame; must match SPAN in ScrollTour.jsx */
-}
-@media (min-width: 768px) {
-  .kb {
-    --span: 60svh;
-  }
-}
-.kb__stage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  overflow: hidden;
-  z-index: 0;
-  background: var(--deep);
-  contain: layout paint;
-}
-.kb__img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: 47% 42%;
-  transform-origin: 0 0;
-  will-change: transform, opacity;
-  visibility: hidden;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-.kb__stage picture:first-child .kb__img {
-  visibility: visible;
-}
-.kb__shade {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--deep) 45%, transparent) 0%,
-    transparent 28%,
-    transparent 52%,
-    color-mix(in srgb, var(--deep) 60%, transparent) 100%
-  );
-}
-/* Scroll distance for the pinned stage: one --span per frame, plus a screen to settle on the last one. */
-.kb__track {
-  position: relative;
-  z-index: -1;
-  margin-top: -100svh;
-  height: calc((var(--frames) - 1) * var(--span) + 100svh + 0.5 * var(--span));
-  pointer-events: none;
-}
-.kb__caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(76px + env(safe-area-inset-bottom));
-  z-index: 2;
-  pointer-events: none;
-}
-@media (min-width: 768px) {
-  .kb__caption {
-    bottom: 56px;
-  }
-}
-.kb__caption .tour__card {
-  animation: kb-caption 0.35s ease both;
-}
-@keyframes kb-caption {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@media (max-width: 767px) {
-  .kb__caption .tour__card {
-    padding: 14px 18px;
-  }
-  .kb__caption .tour__card h3 {
-    font-size: 1.375rem;
-  }
-}
-.tour__frame-skip {
-  position: absolute;
-  right: max(var(--gutter), calc((100% - var(--site)) / 2));
-  top: calc(var(--header-h) + 8px);
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
+/* Main WhatsApp button with the StarBorder light: same size as .btn, so nothing moves when it loads. */
+.star-border.star-cta {
   min-height: 44px;
-  padding: 8px 16px;
-  border-radius: var(--radius-pill);
-  background: rgba(17, 17, 17, 0.55);
-  color: var(--white);
-  font-size: 0.875rem;
+  padding: 10px 24px;
+  gap: 10px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-button);
+  font-family: var(--font-sans);
+  font-size: 1rem;
   font-weight: 600;
-  text-decoration: none;
+  line-height: 1.25;
+  text-align: center;
 }
-.tour__progress {
-  position: absolute;
-  left: max(var(--gutter), calc((100% - var(--site)) / 2));
-  top: calc(var(--header-h) + 26px);
-  z-index: 2;
+.star-border.star-cta svg {
+  flex: none;
+}
+
+/* "Live. Work. Stay." band (CurvedLoop) */
+.marquee {
+  overflow: hidden;
+  background: var(--deep);
+  color: var(--ivory);
+}
+.marquee__inner {
+  height: 76px;
   display: flex;
-  gap: 6px;
+  align-items: center;
 }
-.tour__progress span {
-  width: 28px;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.35);
-  transition: background-color 0.2s ease;
+.marquee .curved-loop-jacket {
+  min-height: 0;
 }
-.tour__progress span.is-on {
-  background: var(--primary);
-}
-.logo img {
-  display: block;
-  height: 32px;
-  width: auto;
-}
-.tour__card {
-  pointer-events: auto;
-  width: min(100%, 26rem);
-  padding: 24px;
-  border-radius: var(--radius-card);
-  background: var(--white);
-  color: var(--secondary);
-  box-shadow: 0 20px 48px rgba(17, 17, 17, 0.25);
-}
-.tour__card .overline {
-  color: var(--mid);
-}
-.tour__card h3 {
-  margin-top: 6px;
+.marquee__text {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.75rem;
-  line-height: 1.2;
-}
-.tour__card p {
-  margin-top: 8px;
-}
-.tour__end {
-  padding: 48px 0 64px;
-}
-/* Static list (reduced motion) */
-.tour-list {
-  list-style: none;
-  padding: 0 0 56px;
-  display: grid;
-  gap: 32px;
 }
 @media (min-width: 768px) {
-  .tour-list {
-    grid-template-columns: repeat(2, 1fr);
+  .marquee__inner {
+    height: 132px;
   }
 }
-.tour-list h3 {
-  color: var(--white);
-  margin-top: 12px;
+
+/* The 9th floor (AccordionGallery) */
+.floor__hint-pointer {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .floor__hint-touch {
+    display: none;
+  }
+  .floor__hint-pointer {
+    display: inline;
+  }
+}
+.floor-gallery {
+  min-height: var(--floor-h);
+  margin-top: 24px;
+}
+.floor-gallery .accordion-gallery {
+  height: var(--floor-h) !important;
+}
+.floor-gallery .ag-panel {
+  min-height: 44px;
+  background: var(--deep);
+}
+.floor-gallery .ag-panel__text {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  white-space: normal;
 }
-.tour-list p {
-  margin-top: 4px;
+.floor-gallery__wait {
+  height: var(--floor-h);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--sand) 45%, var(--ivory));
+}
+.floor__actions {
+  margin-top: 24px;
+}
+
+/* Hotel section (BounceCards) */
+.hotel-cards {
+  position: relative;
+  width: 100%;
+}
+.hotel-cards .bounce-cards {
+  margin: 0 auto;
 }
 
 /* ---------- Chips, fields and forms ---------- */
@@ -1148,9 +1092,9 @@ main {
   border-color: var(--mid);
 }
 .chip input:checked + span {
-  background: var(--accent);
-  border-color: var(--deep);
-  color: var(--on-accent);
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
   font-weight: 600;
 }
 .chip input:focus-visible + span {
@@ -1357,7 +1301,7 @@ main {
   background: var(--rule);
 }
 .fys__bars span.is-on {
-  background: var(--primary);
+  background: var(--accent);
 }
 .fys__step h3 {
   margin-top: 16px;
@@ -1427,7 +1371,7 @@ main {
   color: var(--deep);
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: var(--primary);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
   cursor: pointer;
@@ -1516,8 +1460,8 @@ main {
   flex: none;
   width: 12px;
   height: 12px;
-  border-right: 2.5px solid var(--primary);
-  border-bottom: 2.5px solid var(--primary);
+  border-right: 2.5px solid var(--accent);
+  border-bottom: 2.5px solid var(--accent);
   transform: rotate(45deg) translateY(-3px);
   transition: transform 0.15s ease;
 }

@@ -15,7 +15,7 @@ export default function Location() {
         <div className="container split split--wide-right">
           <div className="stack" style={{ "--stack": "20px" }}>
             <address className="address lead">
-              Charles Hope Cowork
+              Charles Hope Coworking Space
               <br />
               81 Loop Street, 9th floor
               <br />

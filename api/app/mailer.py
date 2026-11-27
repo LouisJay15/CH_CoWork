@@ -55,12 +55,12 @@ def build_email(e: EnquiryIn, reference: str, summary: str | None, estimate: int
     else:
         msg["Subject"] = f"Question {reference} from {who}"
     sender = settings.mail_from or settings.smtp_username or "website@localhost"
-    msg["From"] = sender if "<" in sender else formataddr(("Charles Hope Cowork website", sender))
+    msg["From"] = sender if "<" in sender else formataddr(("Charles Hope Coworking Space website", sender))
     msg["To"] = settings.mail_to
     msg["Reply-To"] = formataddr((who, str(e.email)))
     msg["Message-ID"] = make_msgid(domain="charleshope.co.uk")
 
-    lines = [f"New {'booking request' if e.kind == 'booking' else 'question'} from the Charles Hope Cowork website", f"Reference: {reference}", ""]
+    lines = [f"New {'booking request' if e.kind == 'booking' else 'question'} from the Charles Hope Coworking Space website", f"Reference: {reference}", ""]
     if e.kind == "booking":
         lines += [f"What: {PRODUCT_LABELS.get(e.product, e.product)}", f"Details: {summary}"]
         if e.product == "hotel-guest" and e.desk_type:

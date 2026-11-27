@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import Page from "../components/Page.jsx";
 import HeroMedia from "../components/HeroMedia.jsx";
-import ScrollTour from "../components/ScrollTour.jsx";
+import FloorGallery from "../components/FloorGallery.jsx";
+import MarqueeBand from "../components/MarqueeBand.jsx";
+import HotelCards from "../components/HotelCards.jsx";
+import GlowWhatsAppButton from "../components/GlowWhatsAppButton.jsx";
 import DeskCalculator from "../components/DeskCalculator.jsx";
 import SpotlightPriceCard from "../components/SpotlightPriceCard.jsx";
 import WhatsAppButton from "../components/WhatsAppButton.jsx";
 import AnchorLink from "../components/AnchorLink.jsx";
-import Photo from "../components/Photo.jsx";
 import { PriceNote } from "../components/Notes.jsx";
 import { ArrowDown, ArrowRight } from "../components/Icons.jsx";
 import { FadeContent, SplitText } from "../reactbits/lazy.jsx";
 import { useReducedMotion } from "../lib/media.js";
 import { useLastQuote } from "../lib/quoteStore.js";
 
-const H1 = "A desk in the city, inside Charles Hope.";
+const H1 = "Make room for better work.";
 
 export default function Home() {
   const reduced = useReducedMotion();
@@ -26,42 +28,51 @@ export default function Home() {
         <HeroMedia />
         <div className="container hero__content">
           <div className="hero__text">
-            <span className="overline">Charles Hope Cowork</span>
+            <span className="overline">Charles Hope / Coworking space</span>
             {reduced ? (
               <h1 className="display">{H1}</h1>
             ) : (
               <SplitText tag="h1" text={H1} className="display" textAlign="left" trigger="load" delay={22} duration={0.9} />
             )}
             <p className="lead hero__standfirst">
-              Charles Hope Cowork is a hot-desk workspace on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel. Noah, the hotel's restaurant, is on site. Book a site inspection or request a quote on WhatsApp.
+              Find a workspace that fits the way you work: hot desks on the 9th floor at 81 Loop Street, Cape Town, inside the Charles Hope hotel. Book a site inspection or request a quote on WhatsApp.
             </p>
             <div className="actions">
-              <WhatsAppButton page="Home" label="Book a site inspection on WhatsApp" />
-              <AnchorLink to="tour" className="hero__cue">
-                Tour the floor <ArrowDown />
+              <GlowWhatsAppButton page="Home" label="Book a site inspection on WhatsApp" />
+              <AnchorLink to="floor" className="hero__cue">
+                See the floor <ArrowDown />
               </AnchorLink>
             </div>
           </div>
         </div>
       </div>
 
-      <ScrollTour
-        intro={
-          <p className="lead">
-            The 9th floor has open-plan desks, three boardrooms, a glass meeting pod, phone booths, a lounge with city views and a kitchen. Scroll to walk through it.
-          </p>
-        }
-      >
-        <div className="actions" style={{ marginTop: 0 }}>
-          <WhatsAppButton page="Home" label="Book a site inspection on WhatsApp" />
-          <AnchorLink to="estimate" className="link link-arrow">
-            See what a desk costs
-          </AnchorLink>
-          <Link to="/amenities" className="link link-arrow">
-            See amenities
-          </Link>
+      <MarqueeBand />
+
+      <section id="floor" className="section section--light floor" aria-labelledby="floor-heading">
+        <div className="container">
+          <div className="section-head">
+            <span className="overline">The 9th floor</span>
+            <h2 className="h2" id="floor-heading">
+              Find a space that feels right for you
+            </h2>
+            <p className="lead">Open-plan desks, three boardrooms, a glass meeting pod, two call pods, a lounge and kitchen, and Table Mountain through the windows.</p>
+            <p className="caption floor__hint">
+              <span className="floor__hint-touch">Tap a photo to open it.</span>
+              <span className="floor__hint-pointer">Point at a photo to open it.</span>
+            </p>
+          </div>
+          <FloorGallery />
+          <div className="actions floor__actions">
+            <Link to="/amenities" className="link link-arrow">
+              See all amenities <ArrowRight />
+            </Link>
+            <AnchorLink to="estimate" className="link link-arrow">
+              See what a desk costs
+            </AnchorLink>
+          </div>
         </div>
-      </ScrollTour>
+      </section>
 
       <section id="estimate" className="section section--white" aria-labelledby="estimate-heading">
         <div className="container split split--wide-right">
@@ -91,10 +102,10 @@ export default function Home() {
               <h2 className="h2" id="hotel-heading">
                 Part of the Charles Hope hotel
               </h2>
-              <p>Charles Hope Cowork sits inside Charles Hope, a 41-room boutique hotel, so you get more than a desk.</p>
+              <p>Charles Hope Coworking Space sits inside Charles Hope, a 41-room boutique hotel, so you get more than a desk.</p>
               <p>Monthly tenants get a discount at Noah, the on-site restaurant, for client lunches, coffee and after-work drinks. Ask us on WhatsApp for the current discount.</p>
               <p>Corporate accommodation rates are available at Charles Hope for your visiting clients, colleagues, or yourself when you are in town. Ask us on WhatsApp for those rates.</p>
-              <p>Hotel guests can work from Cowork at R200 a day.</p>
+              <p>Hotel guests can work from the coworking space at R200 a day.</p>
               <PriceNote />
               <div className="actions">
                 <WhatsAppButton page="Home" template="noah" label="Ask us on WhatsApp" />
@@ -104,7 +115,7 @@ export default function Home() {
               </div>
             </div>
           </FadeContent>
-          <Photo id="lws-close" tall />
+          <HotelCards />
         </div>
       </section>
 
@@ -138,7 +149,7 @@ export default function Home() {
             <p className="lead">Message us to book a site inspection and request a quote. We will confirm what is available and how to pay.</p>
           </div>
           <div className="actions">
-            <WhatsAppButton page="Home" option={live?.summary} estimate={live?.total} label="Book a site inspection on WhatsApp" />
+            <GlowWhatsAppButton page="Home" option={live?.summary} estimate={live?.total} label="Book a site inspection on WhatsApp" />
             <Link to="/book" className="btn btn--on-dark">
               Send a booking request
             </Link>

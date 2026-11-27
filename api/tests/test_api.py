@@ -45,7 +45,7 @@ class FakeMailer:
 @pytest.fixture
 def site_dir(tmp_path):
     (tmp_path / "assets").mkdir()
-    (tmp_path / "index.html").write_text("<!doctype html><title>Charles Hope Cowork</title>")
+    (tmp_path / "index.html").write_text("<!doctype html><title>Charles Hope Coworking Space</title>")
     (tmp_path / "assets" / "app.js").write_text("console.log(1)")
     import gzip
     (tmp_path / "assets" / "app.js.gz").write_bytes(gzip.compress(b"console.log(1)"))
@@ -221,7 +221,7 @@ def test_site_routes_and_headers(site_dir):
     client, _, _ = make_client(site_dir)
     for path in ["/", "/desks-and-pricing", "/book"]:
         r = client.get(path)
-        assert r.status_code == 200 and "Charles Hope Cowork" in r.text
+        assert r.status_code == 200 and "Charles Hope Coworking Space" in r.text
         assert "frame-ancestors 'none'" in r.headers["content-security-policy"]
         assert "media-src 'self'" in r.headers["content-security-policy"]
         assert r.headers["x-frame-options"] == "DENY"

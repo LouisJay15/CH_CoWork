@@ -1,12 +1,17 @@
-// BRAND SETTINGS: PLACEHOLDER until the approved brand guideline arrives. See docs/branding.md.
+// BRAND SETTINGS, from the brand guidelines. See docs/branding.md.
 export const BRAND = {
-  name: "Charles Hope Cowork",
+  name: "Charles Hope Coworking Space",
 
-  // Logo. null = the placeholder text wordmark in src/brand/Logo.jsx.
-  // When the approved logo arrives, put the files in public/brand/ and set, for example:
-  //   logo: { src: "brand/logo.svg", srcOnDark: "brand/logo-white.svg", width: 168, height: 32 },
-  logo: null,
+  // Logo lockup: the CharlesHope wordmark with COWORKING SPACE beneath (guideline "Logo concepts").
+  // The wordmark files come from the guideline PDF, recoloured to the approved navy, white and coral.
+  logo: {
+    src: "brand/wordmark-navy.webp",
+    srcOnDark: "brand/wordmark-white.webp",
+    width: 640,
+    height: 103,
+    descriptor: "Coworking space",
+  },
 
-  // Hover glow on the rate cards (React Bits SpotlightCard). Usually the accent colour.
-  spotlightColor: "#90DFF5",
+  // Hover glow on the rate cards (React Bits SpotlightCard): the signature coral, softened.
+  spotlightColor: "rgba(248, 112, 107, 0.22)",
 };

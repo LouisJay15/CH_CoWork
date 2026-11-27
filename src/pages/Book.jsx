@@ -44,7 +44,7 @@ export default function Book() {
                 <a className="link" href={`mailto:${EMAIL}`}>{EMAIL}</a>
               </li>
             </ul>
-            <p>Charles Hope Cowork, 81 Loop Street, 9th floor, Cape Town.</p>
+            <p>Charles Hope Coworking Space, 81 Loop Street, 9th floor, Cape Town.</p>
             <p className="caption">A request is not a confirmed booking. A booking is confirmed when we write back to agree the dates, the rate and how to pay.</p>
           </aside>
         </div>

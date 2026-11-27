@@ -1,13 +1,13 @@
 # Photographs: where each one came from
 
-All tour and page photographs come from Google Drive, folder **Charles Hope / CH CoWork** and its subfolder **CoWork**
+All page photographs come from Google Drive, folder **Charles Hope / CH CoWork** and its subfolder **CoWork**
 (the WhatsApp photos, all 1600x1200), plus the named files at the top of **CH CoWork**.
 `npm run media` (scripts/build-media.mjs) turns the originals into small AVIF and WebP files in `public/media/frames/`,
 and records each one in `src/media/manifest.json`. The originals are kept out of git (`assets/source/`), because staff appear in some.
 
 ## Used on the site
 
-| Tour scene | Frame | Drive file | Drive folder | Why this one |
+| Group | Frame | Drive file | Drive folder | Why this one |
 |---|---|---|---|---|
 | 1 Entrance | `entrance-wide` | Entrance.jpeg | Charles Hope / CH CoWork | Named Entrance; the full logo wall, lit. Same file as WhatsApp 10.44.57. |
 | 1 Entrance | `entrance-logo` | WhatsApp Image 2026-11-26 at 10.44.58.jpeg | Charles Hope / CH CoWork/CoWork | Closest sharp shot of the logo on the slats. |
@@ -44,11 +44,17 @@ version of the same scene existed (the `_cleaned` signage files), that was used 
   10.44.57; 10.45.57 is the same size as 10.45.24).
 - **Not found:** a photo of the glass meeting pod as a separate room. Amenities shows a "photo to follow" panel for it.
 
+## Home gallery (until the new photos arrive)
+
+The Home gallery (`src/lib/spaces.js`) shows six spaces. On 27 November the owner sent six newer, brighter photos of
+these spaces (entrance, Live. Work. Stay., open-plan desks, boardroom, glass meeting pod, the two call pods) in the chat;
+they are not yet in Drive, so the gallery uses the closest photos above until the files arrive:
+`entrance-wide`, `lws-wide`, `open-1`, `boardroom`, `boardroom-door` (the glass-fronted room) and `pod-door`.
+
 ## Video
 
 `cowork-walkthrough-4k.mp4` (152 MB) and `Office_Walk_Through.mp4` (9.5 MB) are at the top of **CH CoWork**. As agreed, they
-are a backup only: the Home tour is built from the stills, which are sharper and far lighter (about 0.5 MB for the
-whole tour on a phone). The videos are not part of the site.
+are a backup only: the Home page uses the stills, which are sharper and far lighter. The videos are not part of the site.
 
 ## Re-running
 

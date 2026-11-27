@@ -2,7 +2,7 @@ import { buildWhatsAppUrl } from "../lib/whatsapp.js";
 import { ChatIcon } from "./Icons.jsx";
 
 /**
- * The WhatsApp call to action. Primary buttons are always #111111 text on #FF6661.
+ * The WhatsApp call to action. Primary buttons are navy with white text, or white with navy text on dark backgrounds.
  * variant: "primary" | "secondary" | "on-dark"
  */
 export default function WhatsAppButton({

@@ -1,7 +1,7 @@
 import { EMAIL, WHATSAPP_BASE } from "./site.js";
 import { formatRand } from "./calculator.js";
 
-const PLACE = "Charles Hope Cowork, 81 Loop Street, 9th floor";
+const PLACE = "Charles Hope Coworking Space, 81 Loop Street, 9th floor";
 
 const formatDate = (iso) => {
   if (!iso) return "";

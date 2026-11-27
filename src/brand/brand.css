@@ -1,42 +1,55 @@
 /*
- * BRAND TOKENS: PLACEHOLDER until the approved brand guideline arrives.
+ * BRAND TOKENS, from the Charles Hope Coworking Space brand guidelines (CH_Coworking_Space_Brand_Guidelines.pdf,
+ * kept outside the repository).
  *
  * This is the only stylesheet to edit for brand colours, fonts, corner radii and shadows.
  * Every component reads these variables, so changing a value here restyles the whole site.
  * Keep the variable names; change the values. See docs/branding.md.
  *
- * Contrast rules to re-check when the colours change (WCAG AA):
- *   --on-primary on --primary          at least 4.5:1 (button text)
- *   --text on --light and on white      at least 4.5:1
- *   --deep and white on each other      at least 4.5:1
+ * Guideline palette: Signature Coral #F8706B, Charles Hope Navy #194049, Warm Ivory #F7F4EF,
+ * Soft Sand #D8C7B5, Muted Sage #A8B5A2, Soft Grey #D9D9D9, White #FFFFFF.
+ * Balance (approximate): 40% neutral, 30% coral, 20% navy, 10% support.
+ *
+ * Contrast (WCAG AA), as the guideline asks ("ensure all text has sufficient contrast"):
+ *   white on navy 10.9:1 and navy on ivory 10.2:1: buttons and text use these.
+ *   white on coral is only 2.8:1 and navy on coral is advised against, so coral carries no small text:
+ *   it is the accent (logo mark, underlines, rules, icons, highlights, glows).
  */
 :root {
-  /* Colours */
-  --primary: #ff6661; /* buttons, highlights */
-  --primary-hover: #ea5e5a;
-  --on-primary: #111111; /* text on --primary: never white on this coral */
-  --accent: #90dff5; /* selected chips, focus rings on dark */
-  --on-accent: #111111;
-  --deep: #193f48; /* headings, dark bands, footer accents */
-  --mid: #47656d; /* captions, labels */
-  --light: #e1f1f4; /* page background, light bands */
+  /* Guideline palette */
+  --coral: #f8706b;
+  --navy: #194049;
+  --ivory: #f7f4ef;
+  --sand: #d8c7b5;
+  --sage: #a8b5a2;
+  --grey: #d9d9d9;
   --white: #ffffff;
-  --ink: #111111;
-  --secondary: #454443; /* body text, footer */
-  --rule: color-mix(in srgb, var(--deep) 12%, transparent);
 
-  /* Fonts (the files are loaded in src/brand/fonts.js) */
-  --font-display: "DM Serif Display", Georgia, serif;
-  --font-sans: "Work Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Roles (components use these) */
+  --primary: var(--navy); /* buttons */
+  --primary-hover: #0f2f37;
+  --on-primary: var(--white);
+  --accent: var(--coral); /* signature accent: underlines, rules, marks, focus on dark */
+  --on-accent: var(--white); /* large display text only, never body copy */
+  --deep: var(--navy); /* headings, dark bands */
+  --mid: #4d6469; /* captions, labels (5.7:1 on ivory) */
+  --light: var(--ivory); /* page background */
+  --ink: var(--navy);
+  --secondary: #2f4448; /* body text (10:1 on ivory) */
+  --rule: color-mix(in srgb, var(--navy) 12%, transparent);
 
-  /* Shape */
-  --radius-card: 1rem;
-  --radius-card-lg: 1.5rem;
-  --radius-button: 0.75rem;
+  /* Fonts (the files are loaded in src/brand/fonts.js): Playfair Display for headlines, DM Sans for body */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Shape: the guideline uses square-cornered blocks, so corners stay small */
+  --radius-card: 0.5rem;
+  --radius-card-lg: 0.75rem;
+  --radius-button: 0.375rem;
   --radius-pill: 9999px;
 
   /* Depth */
-  --shadow-card: 0 8px 24px color-mix(in srgb, var(--deep) 8%, transparent);
-  --shadow-card-hover: 0 12px 32px color-mix(in srgb, var(--deep) 12%, transparent);
-  --shadow-sticky: 0 -4px 16px color-mix(in srgb, var(--deep) 10%, transparent);
+  --shadow-card: 0 8px 24px color-mix(in srgb, var(--navy) 8%, transparent);
+  --shadow-card-hover: 0 12px 32px color-mix(in srgb, var(--navy) 14%, transparent);
+  --shadow-sticky: 0 -4px 16px color-mix(in srgb, var(--navy) 10%, transparent);
 }

@@ -5,7 +5,7 @@ import { estimate } from "./calculator.js";
 describe("WhatsApp prefills", () => {
   it("template A names the page", () => {
     expect(buildWhatsAppText({ page: "Home" })).toBe(
-      "Hello, I would like to book a site inspection at Charles Hope Cowork, 81 Loop Street, 9th floor, and request a quote. I am writing from the Home page.",
+      "Hello, I would like to book a site inspection at Charles Hope Coworking Space, 81 Loop Street, 9th floor, and request a quote. I am writing from the Home page.",
     );
   });
 
@@ -28,14 +28,14 @@ describe("WhatsApp prefills", () => {
 
   it("templates C to F", () => {
     expect(buildWhatsAppText({ page: "Hotel guests", template: "hotel-guest" })).toBe(
-      "Hello, I am a guest at the Charles Hope hotel and would like to use Charles Hope Cowork. Please tell me how to book the hotel guest rate. I am writing from the Hotel guests page.",
+      "Hello, I am a guest at the Charles Hope hotel and would like to use Charles Hope Coworking Space. Please tell me how to book the hotel guest rate. I am writing from the Hotel guests page.",
     );
     expect(buildWhatsAppText({ page: "Home", template: "noah" })).toContain("Noah restaurant discount for monthly tenants");
     expect(buildWhatsAppText({ page: "Amenities", template: "room", room: "pod" })).toBe(
-      "Hello, I would like to check a time slot for the glass meeting pod at Charles Hope Cowork, 81 Loop Street, 9th floor. I am writing from the Amenities page.",
+      "Hello, I would like to check a time slot for the glass meeting pod at Charles Hope Coworking Space, 81 Loop Street, 9th floor. I am writing from the Amenities page.",
     );
     expect(buildWhatsAppText({ page: "Day pass", template: "day-pass" })).toBe(
-      "Hello, I would like to book a day pass at Charles Hope Cowork, 81 Loop Street, 9th floor, and request a quote. I am writing from the Day pass page.",
+      "Hello, I would like to book a day pass at Charles Hope Coworking Space, 81 Loop Street, 9th floor, and request a quote. I am writing from the Day pass page.",
     );
   });
 

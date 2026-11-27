@@ -1,7 +1,7 @@
 import { WHATSAPP_BASE } from "./site.js";
 import { formatNumber } from "./calculator.js";
 
-const PLACE = "Charles Hope Cowork, 81 Loop Street, 9th floor";
+const PLACE = "Charles Hope Coworking Space, 81 Loop Street, 9th floor";
 
 export const ROOMS = {
   boardroom: "a boardroom",
@@ -21,7 +21,7 @@ export function buildWhatsAppText({ page, option, estimate, template = "default"
   }
   switch (template) {
     case "hotel-guest":
-      return `Hello, I am a guest at the Charles Hope hotel and would like to use Charles Hope Cowork. Please tell me how to book the hotel guest rate. ${from}`;
+      return `Hello, I am a guest at the Charles Hope hotel and would like to use Charles Hope Coworking Space. Please tell me how to book the hotel guest rate. ${from}`;
     case "noah":
       return `Hello, I would like to ask about the Noah restaurant discount for monthly tenants and corporate accommodation rates at the Charles Hope hotel. ${from}`;
     case "room":

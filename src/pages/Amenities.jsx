@@ -15,7 +15,7 @@ export default function Amenities() {
   return (
     <Page pageKey="amenities">
       <PageHeader eyebrow="On the floor" title="Amenities">
-        <p className="lead">Charles Hope Cowork sits on the 9th floor at 81 Loop Street, inside the Charles Hope hotel.</p>
+        <p className="lead">Charles Hope Coworking Space sits on the 9th floor at 81 Loop Street, inside the Charles Hope hotel.</p>
       </PageHeader>
 
       <section className="section section--white" aria-labelledby="a-work">
@@ -67,7 +67,7 @@ export default function Amenities() {
             <div className="stack">
               <h2 className="h2" id="a-noah">Noah</h2>
               <p>
-                Noah is the hotel's restaurant, on site. Cowork customers are welcome at Noah during the restaurant's own opening hours. Monthly tenants get a discount at Noah; ask us on WhatsApp for the current discount. The hotel guest cowork rate does not include the Noah discount.
+                Noah is the hotel's restaurant, on site. Coworking members are welcome at Noah during the restaurant's own opening hours. Monthly tenants get a discount at Noah; ask us on WhatsApp for the current discount. The hotel guest cowork rate does not include the Noah discount.
               </p>
               <div className="actions">
                 <WhatsAppButton page="Amenities" template="noah" label="Ask us on WhatsApp" />

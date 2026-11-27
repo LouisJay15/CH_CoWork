@@ -12,7 +12,7 @@ export default function HotelGuests() {
     <Page pageKey="hotelGuests" stickyTemplate="hotel-guest">
       <PageHeader eyebrow="Hotel guests" title="For guests of the Charles Hope hotel">
         <p className="lead">
-          If you are staying at the Charles Hope hotel, you can use Charles Hope Cowork at the hotel guest rate of R200, with full access to the cowork amenities, except the Noah discount.
+          If you are staying at the Charles Hope hotel, you can use Charles Hope Coworking Space at the hotel guest rate of R200, with full access to the cowork amenities, except the Noah discount.
         </p>
       </PageHeader>
 
