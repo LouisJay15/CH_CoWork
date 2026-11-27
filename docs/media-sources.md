@@ -7,7 +7,7 @@ and records each one in `src/media/manifest.json`. The originals are kept out of
 
 ## Used on the site
 
-**The cleaned-up photos (27 November).** Seven retouched, straightened photos plus Terrace.jpg, uploaded by the owner
+**The cleaned-up photos (27 November).** Retouched, straightened photos plus Terrace.jpg and boardroom_hall.jpg, uploaded by the owner
 to the top of **CH CoWork**. They are the Home hero and gallery, and replace the older shots of the same spaces on
 every page. All 1792x1008 except the terrace (1600x1200).
 
@@ -15,8 +15,8 @@ every page. All 1792x1008 except the terrace (1600x1200).
 |---|---|---|---|
 | 1 Entrance | `space-entrance` | Front.jpg | Home hero, Hotel guests, Location, link previews (og-image) |
 | 2 Live. Work. Stay. | `space-lws` | professional-cleaned-up-and-straightened-6.jpg | |
-| 3 Boardroom | `space-boardroom` | professional-cleaned-up-and-straightened-5.jpg | Amenities, Desks and pricing |
-| 4 Glass meeting pod | `space-pod` | professional-cleaned-up-and-straightened-4.jpg | Amenities (replaces the "photo to follow" panel) |
+| 3 Boardroom from the hall | `space-boardroom-hall` | boardroom_hall.jpg | Replaced professional-cleaned-up-and-straightened-4.jpg (same room, tidier), at the owner's request |
+| 4 Inside a boardroom | `space-boardroom` | professional-cleaned-up-and-straightened-5.jpg | Amenities, Desks and pricing |
 | 5 Open-plan desks | `space-open` | professional-cleaned-up-and-straightened-2.jpg | Amenities, Desks and pricing |
 | 6 Call pods | `space-callpods` | professional-cleaned-up-and-straightened-3.jpg | Amenities. No whiteboard in this version. |
 | 7 Lounge and kitchen | `space-lounge` | professional-cleaned-up-and-straightened-1.jpg | Hotel guests. The flip chart's writing is illegible; it is blurred anyway (`redact` in the script). |

@@ -7,7 +7,7 @@ import { FadeContent } from "../reactbits/lazy.jsx";
 
 const ROOMS = [
   { photo: "space-boardroom", title: "Boardrooms", room: "boardroom", text: "Three boardrooms. R1,500 for four hours, or R4,000 for a full day." },
-  { photo: "space-pod", title: "Glass meeting pod", room: "pod", text: "Included in the desk rates, with no separate charge." },
+  { photo: null, title: "Glass meeting pod", room: "pod", text: "Included in the desk rates, with no separate charge." },
   { photo: "space-callpods", title: "Phone booths (call pods)", room: "booth", text: "Included in the desk rates, with no separate charge." },
 ];
 

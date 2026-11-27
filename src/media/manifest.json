@@ -60,12 +60,12 @@
         ]
       }
     },
-    "space-pod": {
-      "alt": "Glass meeting pod: a teal room with frosted glass sliding doors and a table for six, on the open floor",
+    "space-boardroom-hall": {
+      "alt": "A boardroom seen from the hall: a teal room with frosted glass sliding doors and a table for six, on the open floor",
       "source": {
-        "file": "space-pod.jpg",
-        "driveTitle": "professional-cleaned-up-and-straightened-4.jpg",
-        "driveId": "1pWr7G9Z6pgcCsodc18moizLult1xpNtY",
+        "file": "space-boardroom-hall.jpg",
+        "driveTitle": "boardroom_hall.jpg",
+        "driveId": "1HU8FLnYbDw4oN8sc1TCopGO9F22yXfWS",
         "driveFolder": "Charles Hope / CH CoWork"
       },
       "wide": {

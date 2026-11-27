@@ -27,7 +27,7 @@ export const FRAMES = [
   { id: "space-entrance", alt: "Entrance to Charles Hope Coworking Space: the CharlesHope sign on a lit timber-slat wall, beside windows over the city" },
   { id: "space-lws", alt: "White wall reading Live. Work. Stay. beside the timber-slat entrance wall" },
   { id: "space-boardroom", alt: "Boardroom with a teal wall, a wall-mounted screen, an oak table and eight chairs" },
-  { id: "space-pod", alt: "Glass meeting pod: a teal room with frosted glass sliding doors and a table for six, on the open floor" },
+  { id: "space-boardroom-hall", alt: "A boardroom seen from the hall: a teal room with frosted glass sliding doors and a table for six, on the open floor" },
   { id: "space-open", alt: "Open-plan floor with long timber desks, monitors, pendant lights and a wall of windows" },
   { id: "space-callpods", alt: "The two call pods: glass doors into two private booths, each with a desk and a window" },
   { id: "space-lounge", alt: "Long room along the windows to the lounge and kitchen, with sofas, tables and city views", redact: [{ left: 1425, top: 350, width: 150, height: 170 }] },

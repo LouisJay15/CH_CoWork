@@ -4,8 +4,8 @@
 export const SPACES = [
   { key: "entrance", photo: "space-entrance", label: "Arrive on the 9th floor" },
   { key: "live-work-stay", photo: "space-lws", label: "Live. Work. Stay." },
-  { key: "boardroom", photo: "space-boardroom", label: "Three boardrooms" },
-  { key: "meeting-pod", photo: "space-pod", label: "Glass meeting pod" },
+  { key: "boardroom-hall", photo: "space-boardroom-hall", label: "Three boardrooms" },
+  { key: "boardroom", photo: "space-boardroom", label: "Inside a boardroom" },
   { key: "open-plan", photo: "space-open", label: "Open-plan desks" },
   { key: "call-pods", photo: "space-callpods", label: "Two call pods" },
   { key: "lounge", photo: "space-lounge", label: "Lounge and kitchen" },

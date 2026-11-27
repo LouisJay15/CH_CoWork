@@ -36,8 +36,8 @@ npm run dev
 
 The Home page uses React Bits effects (`src/reactbits/`) rather than a scroll tour:
 
-- **The 9th floor**: eight photographs (entrance, Live. Work. Stay., boardroom, glass meeting pod, open-plan desks,
-  call pods, lounge and kitchen, the terrace view of Table Mountain) in an expanding gallery. Desktop: point at a
+- **The 9th floor**: eight photographs (entrance, Live. Work. Stay., a boardroom from the hall and inside, open-plan
+  desks, call pods, lounge and kitchen, the terrace view of Table Mountain) in an expanding gallery. Desktop: point at a
   photo to open it. Phone: tap. (`src/lib/spaces.js`)
 - **"Live. Work. Stay."** scrolls across a navy band under the hero; visitors can drag it.
 - **Hotel section**: a fan of photos that bounces in and parts when you point at one.
