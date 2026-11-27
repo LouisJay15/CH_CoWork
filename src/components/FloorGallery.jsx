@@ -12,7 +12,7 @@ export default function FloorGallery() {
   const desktop = useIsDesktop();
   const canHover = useMediaQuery("(hover: hover) and (pointer: fine)");
   const items = SPACES.map((s) => ({ image: src(s.photo, "wide", 1200, "webp"), label: s.label, alt: frame(s.photo).alt }));
-  const height = desktop ? 520 : 600;
+  const height = desktop ? 520 : 680;
 
   return (
     <NearView className="floor-gallery" margin="100px" style={{ "--floor-h": `${height}px` }}>

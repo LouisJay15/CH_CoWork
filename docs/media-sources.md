@@ -7,24 +7,33 @@ and records each one in `src/media/manifest.json`. The originals are kept out of
 
 ## Used on the site
 
-| Group | Frame | Drive file | Drive folder | Why this one |
-|---|---|---|---|---|
-| 1 Entrance | `entrance-wide` | Entrance.jpeg | Charles Hope / CH CoWork | Named Entrance; the full logo wall, lit. Same file as WhatsApp 10.44.57. |
-| 1 Entrance | `entrance-logo` | WhatsApp Image 2026-11-26 at 10.44.58.jpeg | Charles Hope / CH CoWork/CoWork | Closest sharp shot of the logo on the slats. |
-| 2 Live. Work. Stay. | `lws-wide` | Lobby_cleaned.jpg | Charles Hope / CH CoWork | Highest-resolution file in the folder (3840x2160); sign and slat wall together, a natural step from the logo. |
-| 2 Live. Work. Stay. | `lws-close` | IMG_3877_cleaned.jpg | Charles Hope / CH CoWork | 2016x1512 original, sharper than the WhatsApp copies of the same sign. |
-| 3 Boardroom (approach) | `corridor` | WhatsApp Image 2026-11-26 at 10.45.01 (1).jpeg | Charles Hope / CH CoWork/CoWork | Walk from the sign to the boardroom; no people, no blur. |
-| 3 Boardroom | `boardroom-door` | WhatsApp Image 2026-11-26 at 10.45.03 (1).jpeg | Charles Hope / CH CoWork/CoWork | Glass boardroom from the corridor. |
-| 3 Boardroom | `boardroom` | WhatsApp Image 2026-11-26 at 10.45.04 (1).jpeg | Charles Hope / CH CoWork/CoWork | Cleanest interior: screen, oak table, eight chairs, no door frame in shot. |
-| 4 Open space | `open-1` | WhatsApp Image 2026-11-26 at 10.45.07.jpeg | Charles Hope / CH CoWork/CoWork | Widest open-plan shot; people only small and far away. |
-| 4 Open space | `open-2` | WhatsApp Image 2026-11-26 at 10.45.08.jpeg | Charles Hope / CH CoWork/CoWork | Second wide angle along the windows; people small and far away. |
-| 5 Call pods | `pod-door` | WhatsApp Image 2026-11-26 at 10.45.18 (2).jpeg | Charles Hope / CH CoWork/CoWork | Cropped to x 230 to 820: the whiteboard with door codes and the seated person are outside the crop. |
-| 5 Call pods | `pod-inside` | WhatsApp Image 2026-11-26 at 10.45.16 (3).jpeg | Charles Hope / CH CoWork/CoWork | Cropped to x 0 to 800: inside a pod, whiteboard excluded. The other pod interiors show the photographer reflected in the glass. |
-| 6 Kitchen (lounge) | `lounge` | WhatsApp Image 2026-11-26 at 10.45.20 (3).jpeg | Charles Hope / CH CoWork/CoWork | Sharpest wide shot of the lounge and kitchen, empty. |
-| 6 Kitchen | `kitchen-1` | WhatsApp Image 2026-11-26 at 10.45.22 (1).jpeg | Charles Hope / CH CoWork/CoWork | Island, mirrors and tables; no betting billboard outside the window. |
-| 6 Kitchen | `kitchen-2` | WhatsApp Image 2026-11-26 at 10.45.23 (2).jpeg | Charles Hope / CH CoWork/CoWork | Best kitchen close-up, no billboard. |
-| 7 View | `view-1` | WhatsApp Image 2026-11-26 at 10.45.58 (3).jpeg | Charles Hope / CH CoWork/CoWork | Devil's Peak and Table Mountain from the window. |
-| 7 View | `view-2` | WhatsApp Image 2026-11-26 at 10.45.59.jpeg | Charles Hope / CH CoWork/CoWork | Widest, clearest mountain view. |
+**The cleaned-up photos (27 November).** Seven retouched, straightened photos plus Terrace.jpg, uploaded by the owner
+to the top of **CH CoWork**. They are the Home hero and gallery, and replace the older shots of the same spaces on
+every page. All 1792x1008 except the terrace (1600x1200).
+
+| Gallery | Frame | Drive file | Also used on |
+|---|---|---|---|
+| 1 Entrance | `space-entrance` | Front.jpg | Home hero, Hotel guests, Location, link previews (og-image) |
+| 2 Live. Work. Stay. | `space-lws` | professional-cleaned-up-and-straightened-6.jpg | |
+| 3 Boardroom | `space-boardroom` | professional-cleaned-up-and-straightened-5.jpg | Amenities, Desks and pricing |
+| 4 Glass meeting pod | `space-pod` | professional-cleaned-up-and-straightened-4.jpg | Amenities (replaces the "photo to follow" panel) |
+| 5 Open-plan desks | `space-open` | professional-cleaned-up-and-straightened-2.jpg | Amenities, Desks and pricing |
+| 6 Call pods | `space-callpods` | professional-cleaned-up-and-straightened-3.jpg | Amenities. No whiteboard in this version. |
+| 7 Lounge and kitchen | `space-lounge` | professional-cleaned-up-and-straightened-1.jpg | Hotel guests. The flip chart's writing is illegible; it is blurred anyway (`redact` in the script). |
+| 8 Terrace view | `space-terrace` | Terrace.jpg | Location, Home hotel section. Devil's Peak and Table Mountain. |
+
+**Earlier photos still in use** (Drive, CH CoWork and its CoWork subfolder):
+
+| Frame | Drive file | Used on |
+|---|---|---|
+| `lws-close` | IMG_3877_cleaned.jpg (CH CoWork) | Amenities, Home hotel section |
+| `open-2` | WhatsApp Image 2026-11-26 at 10.45.08.jpeg (CoWork) | Day pass |
+| `lounge` | WhatsApp Image 2026-11-26 at 10.45.20 (3).jpeg (CoWork) | Home hotel section |
+| `kitchen-1` | WhatsApp Image 2026-11-26 at 10.45.22 (1).jpeg (CoWork) | Home hotel section |
+| `kitchen-2` | WhatsApp Image 2026-11-26 at 10.45.23 (2).jpeg (CoWork) | Amenities, Home hotel section |
+
+The other earlier shots (entrance, signage, corridor, boardroom, open plan, pods and views from the walkthrough) were
+replaced by the cleaned-up photos and removed from the site.
 
 The 1600x1200 WhatsApp files are the originals at their full size (checked byte for byte against Drive). Where a sharper
 version of the same scene existed (the `_cleaned` signage files), that was used instead.
@@ -42,14 +51,6 @@ version of the same scene existed (the `_cleaned` signage files), that was used 
   consent before using any of these, even the ones where people are small.
 - **Blur and near-duplicates:** motion-blurred walking frames, and duplicates (Entrance.jpeg is the same file as
   10.44.57; 10.45.57 is the same size as 10.45.24).
-- **Not found:** a photo of the glass meeting pod as a separate room. Amenities shows a "photo to follow" panel for it.
-
-## Home gallery (until the new photos arrive)
-
-The Home gallery (`src/lib/spaces.js`) shows six spaces. On 27 November the owner sent six newer, brighter photos of
-these spaces (entrance, Live. Work. Stay., open-plan desks, boardroom, glass meeting pod, the two call pods) in the chat;
-they are not yet in Drive, so the gallery uses the closest photos above until the files arrive:
-`entrance-wide`, `lws-wide`, `open-1`, `boardroom`, `boardroom-door` (the glass-fronted room) and `pod-door`.
 
 ## Video
 
@@ -58,7 +59,7 @@ are a backup only: the Home page uses the stills, which are sharper and far ligh
 
 ## Re-running
 
-1. Download the files above from Drive into `assets/source/`, named by frame (`entrance-wide.jpg`, and so on),
-   with a `sources.json` as in this table.
-2. `npm run media`. To change only alt text or the pan and zoom points, edit FRAMES in `scripts/build-media.mjs`
-   and run `npm run media -- --motion`.
+1. Download the files above from Drive into `assets/source/`, named by frame (`space-entrance.jpg`, and so on),
+   with a `sources.json` as in these tables.
+2. `npm run media` (all photos, about 8 minutes), or `npm run media -- --only space-terrace` for one or a few.
+   To change only alt text, edit FRAMES in `scripts/build-media.mjs` and run `npm run media -- --motion`.

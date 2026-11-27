@@ -47,7 +47,7 @@ export default function DesksPricing() {
               <Link className="link" to="/hotel-guests">Hotel guests see the Hotel guests page for the R200 guest rate.</Link>
             </p>
           </div>
-          <Photo id="open-1" tall />
+          <Photo id="space-open" tall />
         </div>
       </section>
 
@@ -70,7 +70,7 @@ export default function DesksPricing() {
               <WhatsAppButton page="Desks and pricing" template="room" room="boardroom" label="Check a time on WhatsApp" />
             </div>
           </div>
-          <Photo id="boardroom" tall />
+          <Photo id="space-boardroom" tall />
         </div>
       </section>
 

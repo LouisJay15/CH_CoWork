@@ -6,9 +6,9 @@ import { PriceNote } from "../components/Notes.jsx";
 import { FadeContent } from "../reactbits/lazy.jsx";
 
 const ROOMS = [
-  { photo: "boardroom", title: "Boardrooms", room: "boardroom", text: "Three boardrooms. R1,500 for four hours, or R4,000 for a full day." },
-  { photo: null, title: "Glass meeting pod", room: "pod", text: "Included in the desk rates, with no separate charge." },
-  { photo: "pod-inside", title: "Phone booths (call pods)", room: "booth", text: "Included in the desk rates, with no separate charge." },
+  { photo: "space-boardroom", title: "Boardrooms", room: "boardroom", text: "Three boardrooms. R1,500 for four hours, or R4,000 for a full day." },
+  { photo: "space-pod", title: "Glass meeting pod", room: "pod", text: "Included in the desk rates, with no separate charge." },
+  { photo: "space-callpods", title: "Phone booths (call pods)", room: "booth", text: "Included in the desk rates, with no separate charge." },
 ];
 
 export default function Amenities() {
@@ -29,7 +29,7 @@ export default function Amenities() {
             </div>
           </FadeContent>
           <div className="grid grid--2">
-            <Photo id="open-1" caption="Open-plan desks" sizes="(min-width: 640px) 50vw, 100vw" />
+            <Photo id="space-open" caption="Open-plan desks" sizes="(min-width: 640px) 50vw, 100vw" />
             <Photo id="kitchen-2" caption="Kitchen" sizes="(min-width: 640px) 50vw, 100vw" />
           </div>
         </div>

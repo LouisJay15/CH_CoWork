@@ -6,27 +6,17 @@
     1600
   ],
   "frames": {
-    "entrance-wide": {
-      "alt": "Entrance to Charles Hope Cowork: the CharlesHope logo, lit on a wall of timber slats",
-      "from": [
-        0.47,
-        0.42,
-        1
-      ],
-      "to": [
-        0.47,
-        0.4,
-        1.1
-      ],
+    "space-entrance": {
+      "alt": "Entrance to Charles Hope Coworking Space: the CharlesHope sign on a lit timber-slat wall, beside windows over the city",
       "source": {
-        "file": "entrance-wide.jpg",
-        "driveTitle": "Entrance.jpeg",
-        "driveId": "1YlsL1tUjoDxkl6SOnmN3F96l6KBQJAsm",
+        "file": "space-entrance.jpg",
+        "driveTitle": "Front.jpg",
+        "driveId": "117Gjgy10ey8-ZMCg6THOL-aj8pKQNGTx",
         "driveFolder": "Charles Hope / CH CoWork"
       },
       "wide": {
-        "w": 1600,
-        "h": 1200,
+        "w": 1792,
+        "h": 1008,
         "widths": [
           640,
           1200,
@@ -34,27 +24,17 @@
         ]
       }
     },
-    "entrance-logo": {
-      "alt": "The CharlesHope logo on timber slat panels at the entrance",
-      "from": [
-        0.3,
-        0.45,
-        1
-      ],
-      "to": [
-        0.62,
-        0.45,
-        1.1
-      ],
+    "space-lws": {
+      "alt": "White wall reading Live. Work. Stay. beside the timber-slat entrance wall",
       "source": {
-        "file": "entrance-logo.jpg",
-        "driveTitle": "WhatsApp Image 2026-11-26 at 10.44.58.jpeg",
-        "driveId": "1hYE-BaNvYttKEHOldN9XpUM2YlVUjQgC",
-        "driveFolder": "Charles Hope / CH CoWork/CoWork"
+        "file": "space-lws.jpg",
+        "driveTitle": "professional-cleaned-up-and-straightened-6.jpg",
+        "driveId": "1q3p3dWqU-r6uB9xFZl0l70iaXOuUXiJC",
+        "driveFolder": "Charles Hope / CH CoWork"
       },
       "wide": {
-        "w": 1600,
-        "h": 1200,
+        "w": 1792,
+        "h": 1008,
         "widths": [
           640,
           1200,
@@ -62,27 +42,107 @@
         ]
       }
     },
-    "lws-wide": {
-      "alt": "White wall reading Live. Work. Stay. beside the timber slat entrance wall",
-      "from": [
-        0.36,
-        0.42,
-        1
-      ],
-      "to": [
-        0.33,
-        0.38,
-        1.16
-      ],
+    "space-boardroom": {
+      "alt": "Boardroom with a teal wall, a wall-mounted screen, an oak table and eight chairs",
       "source": {
-        "file": "lws-wide.jpg",
-        "driveTitle": "Lobby_cleaned.jpg",
-        "driveId": "1V20UDsOfUZ59mSo-aUwyHVkc6nIwoQkm",
+        "file": "space-boardroom.jpg",
+        "driveTitle": "professional-cleaned-up-and-straightened-5.jpg",
+        "driveId": "1IWgrQ5O0oJ3TuDSzvm2BQ5IZkgynxfuZ",
         "driveFolder": "Charles Hope / CH CoWork"
       },
       "wide": {
-        "w": 3840,
-        "h": 2160,
+        "w": 1792,
+        "h": 1008,
+        "widths": [
+          640,
+          1200,
+          1600
+        ]
+      }
+    },
+    "space-pod": {
+      "alt": "Glass meeting pod: a teal room with frosted glass sliding doors and a table for six, on the open floor",
+      "source": {
+        "file": "space-pod.jpg",
+        "driveTitle": "professional-cleaned-up-and-straightened-4.jpg",
+        "driveId": "1pWr7G9Z6pgcCsodc18moizLult1xpNtY",
+        "driveFolder": "Charles Hope / CH CoWork"
+      },
+      "wide": {
+        "w": 1792,
+        "h": 1008,
+        "widths": [
+          640,
+          1200,
+          1600
+        ]
+      }
+    },
+    "space-open": {
+      "alt": "Open-plan floor with long timber desks, monitors, pendant lights and a wall of windows",
+      "source": {
+        "file": "space-open.jpg",
+        "driveTitle": "professional-cleaned-up-and-straightened-2.jpg",
+        "driveId": "1D_3zWqNkwX9NbmBrvoiBm5cX0TPHa6Zm",
+        "driveFolder": "Charles Hope / CH CoWork"
+      },
+      "wide": {
+        "w": 1792,
+        "h": 1008,
+        "widths": [
+          640,
+          1200,
+          1600
+        ]
+      }
+    },
+    "space-callpods": {
+      "alt": "The two call pods: glass doors into two private booths, each with a desk and a window",
+      "source": {
+        "file": "space-callpods.jpg",
+        "driveTitle": "professional-cleaned-up-and-straightened-3.jpg",
+        "driveId": "1rLsMICytfOgQTA9C3jVG5RtaSWk8Qd1L",
+        "driveFolder": "Charles Hope / CH CoWork"
+      },
+      "wide": {
+        "w": 1792,
+        "h": 1008,
+        "widths": [
+          640,
+          1200,
+          1600
+        ]
+      }
+    },
+    "space-lounge": {
+      "alt": "Long room along the windows to the lounge and kitchen, with sofas, tables and city views",
+      "source": {
+        "file": "space-lounge.jpg",
+        "driveTitle": "professional-cleaned-up-and-straightened-1.jpg",
+        "driveId": "1PUXDK4HctFLwQDiIEOMokxXr1kiO5B8b",
+        "driveFolder": "Charles Hope / CH CoWork"
+      },
+      "wide": {
+        "w": 1792,
+        "h": 1008,
+        "widths": [
+          640,
+          1200,
+          1600
+        ]
+      }
+    },
+    "space-terrace": {
+      "alt": "The terrace, with a view over central Cape Town to Devil's Peak and Table Mountain",
+      "source": {
+        "file": "space-terrace.jpg",
+        "driveTitle": "Terrace.jpg",
+        "driveId": "1skiYS62hVBaCq8cuiOjrJhetW8i8CcZy",
+        "driveFolder": "Charles Hope / CH CoWork"
+      },
+      "wide": {
+        "w": 1600,
+        "h": 1200,
         "widths": [
           640,
           1200,
@@ -92,16 +152,6 @@
     },
     "lws-close": {
       "alt": "Close-up of the Live. Work. Stay. signage",
-      "from": [
-        0.22,
-        0.45,
-        1
-      ],
-      "to": [
-        0.72,
-        0.45,
-        1.06
-      ],
       "source": {
         "file": "lws-close.jpg",
         "driveTitle": "IMG_3877_cleaned.jpg",
@@ -118,130 +168,8 @@
         ]
       }
     },
-    "corridor": {
-      "alt": "Corridor past glass-fronted rooms toward the open-plan floor",
-      "from": [
-        0.5,
-        0.5,
-        1
-      ],
-      "to": [
-        0.5,
-        0.45,
-        1.28
-      ],
-      "source": {
-        "file": "corridor.jpg",
-        "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.01 (1).jpeg",
-        "driveId": "1-I2L6y4XMWbOCnSyodZwlDKVGTu3azUt",
-        "driveFolder": "Charles Hope / CH CoWork/CoWork"
-      },
-      "wide": {
-        "w": 1600,
-        "h": 1200,
-        "widths": [
-          640,
-          1200,
-          1600
-        ]
-      }
-    },
-    "boardroom-door": {
-      "alt": "Glass-walled boardroom with an open door, off the corridor",
-      "from": [
-        0.4,
-        0.5,
-        1
-      ],
-      "to": [
-        0.32,
-        0.5,
-        1.14
-      ],
-      "source": {
-        "file": "boardroom-door.jpg",
-        "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.03 (1).jpeg",
-        "driveId": "1CmJdeQ09W825Z0aAp9Vi8gW6NusB5yDk",
-        "driveFolder": "Charles Hope / CH CoWork/CoWork"
-      },
-      "wide": {
-        "w": 1600,
-        "h": 1200,
-        "widths": [
-          640,
-          1200,
-          1600
-        ]
-      }
-    },
-    "boardroom": {
-      "alt": "Boardroom with a wall-mounted screen, an oak table and eight chairs",
-      "from": [
-        0.42,
-        0.45,
-        1
-      ],
-      "to": [
-        0.6,
-        0.5,
-        1.1
-      ],
-      "source": {
-        "file": "boardroom.jpg",
-        "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.04 (1).jpeg",
-        "driveId": "1NTMH0xi97GlCgjUXZB3SLQfJne4eZ5By",
-        "driveFolder": "Charles Hope / CH CoWork/CoWork"
-      },
-      "wide": {
-        "w": 1600,
-        "h": 1200,
-        "widths": [
-          640,
-          1200,
-          1600
-        ]
-      }
-    },
-    "open-1": {
-      "alt": "Open-plan floor with long timber desks, pendant lights and a wall of windows",
-      "from": [
-        0.5,
-        0.5,
-        1
-      ],
-      "to": [
-        0.45,
-        0.45,
-        1.12
-      ],
-      "source": {
-        "file": "open-1.jpg",
-        "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.07.jpeg",
-        "driveId": "1BVEjwcBUkzJhr7nhFb2LQq163TTcYM1_",
-        "driveFolder": "Charles Hope / CH CoWork/CoWork"
-      },
-      "wide": {
-        "w": 1600,
-        "h": 1200,
-        "widths": [
-          640,
-          1200,
-          1600
-        ]
-      }
-    },
     "open-2": {
       "alt": "Open-plan desks along the windows, under a black steel roof",
-      "from": [
-        0.55,
-        0.5,
-        1
-      ],
-      "to": [
-        0.35,
-        0.45,
-        1.12
-      ],
       "source": {
         "file": "open-2.jpg",
         "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.08.jpeg",
@@ -258,89 +186,8 @@
         ]
       }
     },
-    "pod-door": {
-      "alt": "Glass door to one of the two call pods",
-      "from": [
-        0.5,
-        0.5,
-        1
-      ],
-      "to": [
-        0.6,
-        0.5,
-        1.14
-      ],
-      "source": {
-        "file": "pod-door.jpg",
-        "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.18 (2).jpeg",
-        "driveId": "1zd31BOd2KOk4eST6gaG8AJNLXwW-AzH3",
-        "driveFolder": "Charles Hope / CH CoWork/CoWork"
-      },
-      "tall": {
-        "w": 590,
-        "h": 1200,
-        "widths": [
-          590
-        ]
-      },
-      "wide": {
-        "w": 1600,
-        "h": 900,
-        "widths": [
-          640,
-          1200,
-          1600
-        ]
-      }
-    },
-    "pod-inside": {
-      "alt": "Inside a call pod: a timber desk and a window over the city",
-      "from": [
-        0.5,
-        0.5,
-        1
-      ],
-      "to": [
-        0.45,
-        0.4,
-        1.12
-      ],
-      "source": {
-        "file": "pod-inside.jpg",
-        "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.16 (3).jpeg",
-        "driveId": "14LzVzHnfg0GjaIsXaOiOQy4ShskjUolH",
-        "driveFolder": "Charles Hope / CH CoWork/CoWork"
-      },
-      "tall": {
-        "w": 800,
-        "h": 1200,
-        "widths": [
-          640,
-          800
-        ]
-      },
-      "wide": {
-        "w": 1600,
-        "h": 900,
-        "widths": [
-          640,
-          1200,
-          1600
-        ]
-      }
-    },
     "lounge": {
       "alt": "Lounge with sofas and dining tables beside the kitchen",
-      "from": [
-        0.5,
-        0.5,
-        1
-      ],
-      "to": [
-        0.3,
-        0.45,
-        1.14
-      ],
       "source": {
         "file": "lounge.jpg",
         "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.20 (3).jpeg",
@@ -359,16 +206,6 @@
     },
     "kitchen-1": {
       "alt": "Kitchen with a timber-slat island, bar stools and dining tables",
-      "from": [
-        0.55,
-        0.45,
-        1
-      ],
-      "to": [
-        0.5,
-        0.4,
-        1.12
-      ],
       "source": {
         "file": "kitchen-1.jpg",
         "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.22 (1).jpeg",
@@ -387,76 +224,10 @@
     },
     "kitchen-2": {
       "alt": "Kitchen island with a marble top, gas hob and bar stools",
-      "from": [
-        0.35,
-        0.45,
-        1
-      ],
-      "to": [
-        0.6,
-        0.45,
-        1.1
-      ],
       "source": {
         "file": "kitchen-2.jpg",
         "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.23 (2).jpeg",
         "driveId": "1li1N9ScSnilBR6a64tjsLqiJd1wy6u9c",
-        "driveFolder": "Charles Hope / CH CoWork/CoWork"
-      },
-      "wide": {
-        "w": 1600,
-        "h": 1200,
-        "widths": [
-          640,
-          1200,
-          1600
-        ]
-      }
-    },
-    "view-1": {
-      "alt": "View over central Cape Town to Devil's Peak and Table Mountain",
-      "from": [
-        0.45,
-        0.4,
-        1
-      ],
-      "to": [
-        0.4,
-        0.3,
-        1.12
-      ],
-      "source": {
-        "file": "view-1.jpg",
-        "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.58 (3).jpeg",
-        "driveId": "1Ks_7ASKtvuQx6BxAMUkpvSlTejsZdUMz",
-        "driveFolder": "Charles Hope / CH CoWork/CoWork"
-      },
-      "wide": {
-        "w": 1600,
-        "h": 1200,
-        "widths": [
-          640,
-          1200,
-          1600
-        ]
-      }
-    },
-    "view-2": {
-      "alt": "Terrace view across the city to Devil's Peak and Table Mountain",
-      "from": [
-        0.6,
-        0.35,
-        1
-      ],
-      "to": [
-        0.32,
-        0.3,
-        1.18
-      ],
-      "source": {
-        "file": "view-2.jpg",
-        "driveTitle": "WhatsApp Image 2026-11-26 at 10.45.59.jpeg",
-        "driveId": "1Aqwoso7vRWSu3naC449TqbwaSxL70TTQ",
         "driveFolder": "Charles Hope / CH CoWork/CoWork"
       },
       "wide": {

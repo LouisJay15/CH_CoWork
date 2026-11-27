@@ -36,8 +36,9 @@ npm run dev
 
 The Home page uses React Bits effects (`src/reactbits/`) rather than a scroll tour:
 
-- **The 9th floor**: six photographs (entrance, Live. Work. Stay., open-plan desks, boardroom, glass meeting pod,
-  call pods) in an expanding gallery. Desktop: point at a photo to open it. Phone: tap. (`src/lib/spaces.js`)
+- **The 9th floor**: eight photographs (entrance, Live. Work. Stay., boardroom, glass meeting pod, open-plan desks,
+  call pods, lounge and kitchen, the terrace view of Table Mountain) in an expanding gallery. Desktop: point at a
+  photo to open it. Phone: tap. (`src/lib/spaces.js`)
 - **"Live. Work. Stay."** scrolls across a navy band under the hero; visitors can drag it.
 - **Hotel section**: a fan of photos that bounces in and parts when you point at one.
 - **Main WhatsApp buttons**: a coral light runs round the edge.
@@ -54,7 +55,7 @@ DM Sans, and the CharlesHope wordmark with COWORKING SPACE. Everything brand-spe
 ## Speed
 
 Measured on an emulated mid-range phone over slow 4G (Lighthouse mobile settings): the Home page shows its main image in
-about 1.3 s, with 259 KB for the first load (JavaScript 118 KB, fonts 64 KB, images 69 KB). The gallery and the
+about 1.1 s, with 228 KB for the first load (JavaScript 118 KB, fonts 64 KB, images 38 KB). The gallery and the
 other effects add their photos and code only as the visitor scrolls to them. How: AVIF images sized per screen, lazy loading below the fold,
 pages other than Home loaded on demand, the animation library loaded after first paint, fonts served from the site,
 and Brotli or gzip files written at build time (the Python app sends them).

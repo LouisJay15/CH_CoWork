@@ -1,7 +1,8 @@
 // Builds the web images for the Home scroll tour and the rest of the site from the original photographs.
 //
 //   npm run media            (all images; a few minutes)
-//   npm run media -- --motion  (only alt text and pan/zoom points, into the existing manifest)
+//   npm run media -- --motion  (only the alt text, into the existing manifest)
+//   npm run media -- --only space-terrace,space-lws  (only these photos, merged into the existing manifest)
 //
 // Reads assets/source/<id>.jpg (originals from Google Drive, not committed: staff appear in some),
 // writes public/media/frames/<id>[-tall]-<width>.avif|webp and src/media/manifest.json (committed).
@@ -20,24 +21,23 @@ const WIDTHS = [640, 1200, 1600];
 const AVIF = { quality: 45, effort: 6, chromaSubsampling: "4:2:0" };
 const WEBP = { quality: 60, effort: 5 };
 
-// focal: where the eye goes, as fractions of the image. from/to drive the pan and zoom in the tour.
+// Frames with "redact" have those rectangles blurred (writing on boards), before anything else.
 export const FRAMES = [
-  { id: "entrance-wide", alt: "Entrance to Charles Hope Cowork: the CharlesHope logo, lit on a wall of timber slats", from: [0.47, 0.42, 1.0], to: [0.47, 0.4, 1.1] },
-  { id: "entrance-logo", alt: "The CharlesHope logo on timber slat panels at the entrance", from: [0.3, 0.45, 1.0], to: [0.62, 0.45, 1.1] },
-  { id: "lws-wide", alt: "White wall reading Live. Work. Stay. beside the timber slat entrance wall", from: [0.36, 0.42, 1.0], to: [0.33, 0.38, 1.16] },
-  { id: "lws-close", alt: "Close-up of the Live. Work. Stay. signage", from: [0.22, 0.45, 1.0], to: [0.72, 0.45, 1.06] },
-  { id: "corridor", alt: "Corridor past glass-fronted rooms toward the open-plan floor", from: [0.5, 0.5, 1.0], to: [0.5, 0.45, 1.28] },
-  { id: "boardroom-door", alt: "Glass-walled boardroom with an open door, off the corridor", from: [0.4, 0.5, 1.0], to: [0.32, 0.5, 1.14] },
-  { id: "boardroom", alt: "Boardroom with a wall-mounted screen, an oak table and eight chairs", from: [0.42, 0.45, 1.0], to: [0.6, 0.5, 1.1] },
-  { id: "open-1", alt: "Open-plan floor with long timber desks, pendant lights and a wall of windows", from: [0.5, 0.5, 1.0], to: [0.45, 0.45, 1.12] },
-  { id: "open-2", alt: "Open-plan desks along the windows, under a black steel roof", from: [0.55, 0.5, 1.0], to: [0.35, 0.45, 1.12] },
-  { id: "pod-door", alt: "Glass door to one of the two call pods", crop: { left: 230, top: 0, width: 590, height: 1200 }, from: [0.5, 0.5, 1.0], to: [0.6, 0.5, 1.14] },
-  { id: "pod-inside", alt: "Inside a call pod: a timber desk and a window over the city", crop: { left: 0, top: 0, width: 800, height: 1200 }, from: [0.5, 0.5, 1.0], to: [0.45, 0.4, 1.12] },
-  { id: "lounge", alt: "Lounge with sofas and dining tables beside the kitchen", from: [0.5, 0.5, 1.0], to: [0.3, 0.45, 1.14] },
-  { id: "kitchen-1", alt: "Kitchen with a timber-slat island, bar stools and dining tables", from: [0.55, 0.45, 1.0], to: [0.5, 0.4, 1.12] },
-  { id: "kitchen-2", alt: "Kitchen island with a marble top, gas hob and bar stools", from: [0.35, 0.45, 1.0], to: [0.6, 0.45, 1.1] },
-  { id: "view-1", alt: "View over central Cape Town to Devil's Peak and Table Mountain", from: [0.45, 0.4, 1.0], to: [0.4, 0.3, 1.12] },
-  { id: "view-2", alt: "Terrace view across the city to Devil's Peak and Table Mountain", from: [0.6, 0.35, 1.0], to: [0.32, 0.3, 1.18] },
+  // The seven cleaned-up, straightened photos (Drive, CH CoWork, 27 November): Home hero and gallery, and the pages.
+  { id: "space-entrance", alt: "Entrance to Charles Hope Coworking Space: the CharlesHope sign on a lit timber-slat wall, beside windows over the city" },
+  { id: "space-lws", alt: "White wall reading Live. Work. Stay. beside the timber-slat entrance wall" },
+  { id: "space-boardroom", alt: "Boardroom with a teal wall, a wall-mounted screen, an oak table and eight chairs" },
+  { id: "space-pod", alt: "Glass meeting pod: a teal room with frosted glass sliding doors and a table for six, on the open floor" },
+  { id: "space-open", alt: "Open-plan floor with long timber desks, monitors, pendant lights and a wall of windows" },
+  { id: "space-callpods", alt: "The two call pods: glass doors into two private booths, each with a desk and a window" },
+  { id: "space-lounge", alt: "Long room along the windows to the lounge and kitchen, with sofas, tables and city views", redact: [{ left: 1425, top: 350, width: 150, height: 170 }] },
+  { id: "space-terrace", alt: "The terrace, with a view over central Cape Town to Devil's Peak and Table Mountain" },
+  // Earlier photos from the walkthrough, still used in the hotel section and on the day pass and amenities pages.
+  { id: "lws-close", alt: "Close-up of the Live. Work. Stay. signage" },
+  { id: "open-2", alt: "Open-plan desks along the windows, under a black steel roof" },
+  { id: "lounge", alt: "Lounge with sofas and dining tables beside the kitchen" },
+  { id: "kitchen-1", alt: "Kitchen with a timber-slat island, bar stools and dining tables" },
+  { id: "kitchen-2", alt: "Kitchen island with a marble top, gas hob and bar stools" },
 ];
 
 async function writeVariants(pipelineFactory, base, naturalWidth) {
@@ -60,9 +60,9 @@ async function writeVariants(pipelineFactory, base, naturalWidth) {
 async function main() {
   if (process.argv.includes("--motion")) {
     const manifest = JSON.parse(readFileSync(MANIFEST, "utf8"));
-    for (const f of FRAMES) Object.assign(manifest.frames[f.id], { alt: f.alt, from: f.from, to: f.to });
+    for (const f of FRAMES) Object.assign(manifest.frames[f.id], { alt: f.alt });
     writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
-    console.log("[media] alt text and motion updated");
+    console.log("[media] alt text updated");
     return;
   }
   if (!existsSync(SRC)) {
@@ -72,15 +72,30 @@ async function main() {
   const sources = JSON.parse(readFileSync(join(SRC, "sources.json"), "utf8"));
   mkdirSync(OUT, { recursive: true });
   mkdirSync(join(root, "src", "media"), { recursive: true });
+  const onlyArg = process.argv.find((a, i) => process.argv[i - 1] === "--only");
+  const only = onlyArg ? new Set(onlyArg.split(",")) : null;
+  const previous = only && existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, "utf8")).frames : {};
   const manifest = { generated: "npm run media", widths: WIDTHS, frames: {} };
   let total = 0;
 
   for (const f of FRAMES) {
+    if (only && !only.has(f.id)) {
+      if (previous[f.id]) manifest.frames[f.id] = previous[f.id];
+      continue;
+    }
     const file = join(SRC, `${f.id}.jpg`);
     const meta = await sharp(file).metadata();
     const crop = f.crop ?? { left: 0, top: 0, width: meta.width, height: meta.height };
-    const cropped = () => sharp(file).rotate().extract(crop);
-    const entry = { alt: f.alt, from: f.from, to: f.to, source: sources[f.id] };
+    let input = file;
+    if (f.redact) {
+      // Blur writing on boards so nothing on them can be read.
+      const layers = await Promise.all(
+        f.redact.map(async (r) => ({ input: await sharp(file).rotate().extract(r).blur(12).toBuffer(), left: r.left, top: r.top })),
+      );
+      input = await sharp(file).rotate().composite(layers).jpeg({ quality: 95 }).toBuffer();
+    }
+    const cropped = () => sharp(input).rotate().extract(crop);
+    const entry = { alt: f.alt, source: sources[f.id] };
 
     if (f.crop) {
       // Tall: the crop itself, for portrait screens.
@@ -108,7 +123,7 @@ async function main() {
   }
 
   // Link-preview image for WhatsApp, Facebook and LinkedIn: a crop of the entrance photo, 1200x630 JPEG.
-  await sharp(join(SRC, "entrance-wide.jpg")).resize(1200, 630, { fit: "cover", position: "centre" }).jpeg({ quality: 78, mozjpeg: true }).toFile(join(root, "public", "media", "og-image.jpg"));
+  if (!only || only.has("space-entrance")) await sharp(join(SRC, "space-entrance.jpg")).resize(1200, 630, { fit: "cover", position: "centre" }).jpeg({ quality: 78, mozjpeg: true }).toFile(join(root, "public", "media", "og-image.jpg"));
 
   writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
   console.log(`[media] ${FRAMES.length} frames, ${(total / 1024 / 1024).toFixed(1)} MB across all sizes and formats (a visitor downloads one size in one format).`);

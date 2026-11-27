@@ -874,7 +874,7 @@ main {
   object-fit: cover;
 }
 .hero__media img {
-  object-position: 50% 45%; /* keep the CharlesHope sign in view on tall phone screens */
+  object-position: 44% 40%; /* keep the CharlesHope sign in view on tall phone screens */
 }
 /* Phone: the photo fills the top half and fades into navy, so the heading never sits on the sign. */
 .hero__overlay {
